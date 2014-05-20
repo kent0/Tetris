@@ -1,16 +1,20 @@
+import java.util.Random;
+
 public class Tetromino {
     int[][] shape;
     int[][] position;
     int config;
 
-    Tetromino(int shape) {
-	this.generator(shape);
+    public Tetromino() {
+	this.generator();
 	this.config = 0;
     }
 
-    void generator(int shape) {
+    private void generator() {
+	Random randomGenerator = new Random();
+	int randomNumber = randomGenerator.nextInt(7) + 1;
 	
-	switch (shape) {
+	switch (randomNumber) {
 	    
 	case 1: this.shape = {
 		{0,0,0,0},
@@ -51,8 +55,8 @@ public class Tetromino {
 		{0}};
 	    
     }
-
-    void rotateClockwise() {
+	
+    public void rotateClockwise() {
 	int size = this.shape.length;
 	int[][] newShape = new int[size][size];
 	
