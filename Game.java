@@ -1,3 +1,5 @@
+import java.lang.String;
+
 public class Game {
     long startTime;
     int[][] well = new int[20][10];
@@ -11,5 +13,32 @@ public class Game {
 		this.well[i][j] = 0;
 	    }
 	}
-    }    
+    }
+
+    public String toString() {
+	String description = "";
+	description += "Well: \n";
+	    
+	for (int[] row : well) {
+	    description += "||";
+	    for (int element : row) {
+		if (element == 0) {
+		    description += "· ";
+		} else {
+		    description += "[]";
+		}
+	    }
+	    description += "||\n";
+	}
+
+	description += "||";
+	
+	for (int i = 0; i < 20; i++) {
+	    description += "-";
+	}
+
+	description += "||\n";
+
+	return description;
+    }
 }
