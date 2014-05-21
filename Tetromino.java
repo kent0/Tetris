@@ -39,7 +39,7 @@ public class Tetromino {
 
     public Tetromino() {
 	this.shape = generator();
-	this.config = 0;
+	this.position = new int[2];
     }
 
     public int[][] getShape() {
@@ -52,7 +52,7 @@ public class Tetromino {
 
     public void setPosition(int[] position) {
 	if (position.length == 2) {
-	    this.position = position
+	    this.position = position;
 	}
     }
 
