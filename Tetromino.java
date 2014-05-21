@@ -46,6 +46,10 @@ public class Tetromino {
 	return this.shape;
     }
 
+    private void setShape(int[][] shape) {
+	this.shape = shape;
+    }
+
     public int[] getPosition() {
 	return this.position;
     }
@@ -62,24 +66,31 @@ public class Tetromino {
 	
         return TETROMINOS[randomNumber];
     }
+
+    public void move(int[] movement) {
+	if (movement.length == 2) {
+	    this.setPosition(new int[]{this.getPosition()+movement[0],this.getPosition()+movement[1]});
+	}
+    }
 	
-    public void rotateClockwise() {
-	int size = this.shape.length;
-	int[][] newShape = new int[size][size];
-	
-	for (int i = 0; i < size; i++) {
-	    for (int j = 0; j < size; j++) {
-		newShape[i][j] = this.shape[size - 1 - j][i];
+    public void rotate(boolean clockwise) {
+	if (clockwise) {
+	    int size = this.getShape().length;
+	    int[][] newShape = new int[size][size];
+	    
+	    for (int i = 0; i < size; i++) {
+		for (int j = 0; j < size; j++) {
+		    newShape[i][j] = this.getShape()[size - 1 - j][i];
+		}
+	    }
+	    
+	    this.setShape(newShape);
+	} else {
+	    for (int i = 0; i < 3; i++) {
+		this.rotate(true);
 	    }
 	}
-
-	this.shape = newShape;
-    }
-
-    public void rotateCounterClockwise() {
-	for (int i = 0; i < 3; i++) {
-	    this.rotateClockwise();
-	}
+	
     }
 
     public static void test() {
@@ -97,10 +108,13 @@ public class Tetromino {
 			testString += "[]";
 		    }
 		}
+		
 		testString += "\n";
 	    }
+	    
 	    testString += "\n";
 	}
+	
 	System.out.println(testString);
     }
 
@@ -110,7 +124,7 @@ public class Tetromino {
 	
 	for (int i = 0; i < this.shape.length; i++) {
 	    for (int j = 0; j < this.shape[i].length; j++) {
-		if (this.shape[i][j] != 0) {
+		if (this.getShape()[i][j] != 0) {
 		    configuration[count][0] = i;
 		    configuration[count++][1] = j;
 		}
@@ -131,6 +145,7 @@ public class Tetromino {
 		    description += "[]";
 		}
 	    }
+	    
 	    description += "\n";
 	}
 	
