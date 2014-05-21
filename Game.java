@@ -41,12 +41,27 @@ public class Game {
 	currentPiece.setPosition(startPosition);
     }
 
+    public boolean checkConflict() {
+	
+	for (int i = 0; i < 4; i++) {
+	    int[] target = new int[2];
+	    target[0] = this.currentPiece.getPosition()[0] + this.currentPiece.configuration()[i][0];
+	    target[1] = this.currentPiece.getPosition()[1] + this.currentPiece.configuration()[i][1];
+	    if (target[0] < 0 || target[0] > 21 || target[1] < 0 || target[1] > 9 || well[target[0]][target[1]] != 0) {
+		return false;
+	    }
+	}
+
+	return true;
+    }
+
     public String toString() {
 	String description = "";
 	description += "Well: \n";
 	    
 	for (int[] row : well) {
 	    description += "||";
+	    
 	    for (int element : row) {
 		if (element == 0) {
 		    description += "· ";
@@ -54,6 +69,7 @@ public class Game {
 		    description += "[]";
 		}
 	    }
+	    
 	    description += "||\n";
 	}
 
