@@ -23,17 +23,7 @@ public class Main {
     }
 
     public static void tetrominoTest() {
-	Tetromino tetromino = new Tetromino();
-	
-	for (int i = 0; i < 4; i++) {
-	    System.out.println(tetromino.toString());
-	    tetromino.rotateClockwise();
-	}
-
-	for (int i = 0; i < 4; i++) {
-	    System.out.println(tetromino.toString());
-	    tetromino.rotateCounterClockwise();
-	}
+	Tetromino.test();
     }
 }
     

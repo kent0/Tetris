@@ -1,13 +1,14 @@
 import java.util.Random;
 import java.lang.String;
 
-final int[][][] TETROMINOS = {
+public class Tetromino {
+    final static int[][][] TETROMINOS = {
     {{0}},
     
     {{0,0,0,0},
      {0,0,0,0},
      {1,1,1,1},
-     {0,0,0,0},
+     {0,0,0,0}},
      
      {{2,2},
       {2,2}},
@@ -32,8 +33,6 @@ final int[][][] TETROMINOS = {
       {0,7,7},
       {0,0,0}}
 };
-
-public class Tetromino {
 
     int[][] shape;
     int[][] position;
