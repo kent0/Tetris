@@ -1,6 +1,6 @@
 public class Game {
     long startTime;
-    int[20][10] well;
+    int[][] well = new int[20][10];
     Tetromino currentPiece = new Tetromino();
 
     public Game() {
