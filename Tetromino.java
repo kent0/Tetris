@@ -104,6 +104,22 @@ public class Tetromino {
 	System.out.println(testString);
     }
 
+    public int[][] configuration() {
+	int[][] configuration = new int[4][2];
+	int count = 0;
+	
+	for (int i = 0; i < this.shape.length; i++) {
+	    for (int j = 0; j < this.shape[i].length; j++) {
+		if (this.shape[i][j] != 0) {
+		    configuration[count][0] = i;
+		    configuration[count++][1] = j;
+		}
+	    }
+	}
+
+	return configuration;
+    }
+
     public String toString() {
 	String description = "";
 	
