@@ -19,11 +19,11 @@ public class Main {
 	frame.add(panel);
 
 	frame.setVisible(true);
-	tetrominoTest();
-    }
 
-    public static void tetrominoTest() {
 	Tetromino.test();
+	
+	Game game = new Game();
+	System.out.println(game.toString());
     }
 }
     
