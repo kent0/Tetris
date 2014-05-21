@@ -1,59 +1,50 @@
 import java.util.Random;
 
 public class Tetromino {
+    final int[][][] TETROMINOS = {
+	{{0}},
+	
+	{{0,0,0,0},
+	 {0,0,0,0},
+	 {0,0,0,0},
+	 {1,1,1,1}},
+	
+	{{2,2},
+	 {2,2}},
+	
+	{{0,3,0},
+	 {3,3,3},
+	 {0,0,0}},
+	
+	{{4,0,0},
+	 {4,4,4},
+	 {0,0,0}},
+
+	{{0,0,5},
+	 {5,5,5},
+	 {0,0,0}},
+
+	{{0,6,6},
+	 {6,6,0},
+	 {0,0,0}},
+
+	{{7,7,0},
+	 {0,7,7},
+	 {0,0,0}}
+    };
     int[][] shape;
     int[][] position;
     int config;
 
     public Tetromino() {
-	this.generator();
+	this.shape = generator();
 	this.config = 0;
     }
 
-    private void generator() {
+    private int[][] generator() {
 	Random randomGenerator = new Random();
 	int randomNumber = randomGenerator.nextInt(7) + 1;
-	
-	switch (randomNumber) {
-	    
-	case 1: this.shape = {
-		{0,0,0,0},
-		{0,0,0,0},
-		{0,0,0,0},
-		{1,1,1,1}};
-	    
-	case 2: this.shape = {
-		{2,2},
-		{2,2}};
-	    
-	case 3: this.shape = {
-		{0,3,0},
-		{3,3,3},
-		{0,0,0}};
-	    
-	case 4: this.shape = {
-		{4,0,0},
-		{4,4,4},
-		{0,0,0}};
-	    
-	case 5: this.shape = {
-		{0,0,5},
-		{5,5,5},
-		{0,0,0}};
-	    
-	case 6: this.shape = {
-		{0,6,6},
-		{6,6,0},
-		{0,0,0}};
-	    
-	case 7: this.shape = {
-		{7,7,0},
-		{0,7,7},
-		{0,0,0}};
-	    
-	case default: this.shape = {
-		{0}};
-	    
+        return TETROMINOS[randomNumber];
     }
 	
     public void rotateClockwise() {
@@ -71,7 +62,7 @@ public class Tetromino {
 
     void rotateCounterClockwise() {
 	for (int i = 0; i < 3; i++) {
-	    this.shape.rotateClockwise();
+	    this.rotateClockwise();
 	}
     }
 }
