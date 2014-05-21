@@ -69,7 +69,7 @@ public class Tetromino {
 
     public void move(int[] movement) {
 	if (movement.length == 2) {
-	    this.setPosition(new int[]{this.getPosition()+movement[0],this.getPosition()+movement[1]});
+	    this.setPosition(new int[]{this.getPosition()[0]+movement[0],this.getPosition()[1]+movement[1]});
 	}
     }
 	
