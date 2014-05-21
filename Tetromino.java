@@ -70,7 +70,7 @@ public class Tetromino {
 	}
     }
 
-    public void test() {
+    public static void test() {
 	String testString = "";
 	
 	for (int i = 0; i < 8; i++) {
