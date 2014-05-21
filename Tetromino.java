@@ -35,12 +35,25 @@ public class Tetromino {
 };
 
     int[][] shape;
-    int[][] position;
-    int config;
+    int[] position;
 
     public Tetromino() {
 	this.shape = generator();
 	this.config = 0;
+    }
+
+    public int[][] getShape() {
+	return this.shape;
+    }
+
+    public int[] getPosition() {
+	return this.position;
+    }
+
+    public void setPosition(int[] position) {
+	if (position.length == 2) {
+	    this.position = position
+	}
     }
 
     private int[][] generator() {
