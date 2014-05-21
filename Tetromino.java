@@ -70,6 +70,28 @@ public class Tetromino {
 	}
     }
 
+    public void test() {
+	String testString = "";
+	
+	for (int i = 0; i < 8; i++) {
+	    int[][] testShape = TETROMINOS[i];
+	    testString += "Tetromino " + i + ": \n";
+	    
+	    for (int[] row : testShape) {
+		for (int element : row) {
+		    if (element == 0) {
+			testString += "  ";
+		    } else {
+			testString += "[]";
+		    }
+		}
+		testString += "\n";
+	    }
+	    testString += "\n";
+	}
+	System.out.println(testString);
+    }
+
     public String toString() {
 	String description = "";
 	
