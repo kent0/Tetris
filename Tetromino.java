@@ -1,37 +1,40 @@
 import java.util.Random;
+import java.lang.String;
+
+final int[][][] TETROMINOS = {
+    {{0}},
+    
+    {{0,0,0,0},
+     {0,0,0,0},
+     {1,1,1,1},
+     {0,0,0,0},
+     
+     {{2,2},
+      {2,2}},
+     
+     {{0,3,0},
+      {3,3,3},
+      {0,0,0}},
+     
+     {{4,0,0},
+      {4,4,4},
+      {0,0,0}},
+     
+     {{0,0,5},
+      {5,5,5},
+      {0,0,0}},
+
+     {{0,6,6},
+      {6,6,0},
+      {0,0,0}},
+     
+     {{7,7,0},
+      {0,7,7},
+      {0,0,0}}
+};
 
 public class Tetromino {
-    final int[][][] TETROMINOS = {
-	{{0}},
-	
-	{{0,0,0,0},
-	 {0,0,0,0},
-	 {0,0,0,0},
-	 {1,1,1,1}},
-	
-	{{2,2},
-	 {2,2}},
-	
-	{{0,3,0},
-	 {3,3,3},
-	 {0,0,0}},
-	
-	{{4,0,0},
-	 {4,4,4},
-	 {0,0,0}},
 
-	{{0,0,5},
-	 {5,5,5},
-	 {0,0,0}},
-
-	{{0,6,6},
-	 {6,6,0},
-	 {0,0,0}},
-
-	{{7,7,0},
-	 {0,7,7},
-	 {0,0,0}}
-    };
     int[][] shape;
     int[][] position;
     int config;
@@ -44,6 +47,7 @@ public class Tetromino {
     private int[][] generator() {
 	Random randomGenerator = new Random();
 	int randomNumber = randomGenerator.nextInt(7) + 1;
+	
         return TETROMINOS[randomNumber];
     }
 	
@@ -60,9 +64,26 @@ public class Tetromino {
 	this.shape = newShape;
     }
 
-    void rotateCounterClockwise() {
+    public void rotateCounterClockwise() {
 	for (int i = 0; i < 3; i++) {
 	    this.rotateClockwise();
 	}
+    }
+
+    public String toString() {
+	String description = "";
+	
+	for (int[] row : this.shape) {
+	    for (int element : row) {
+		if (element == 0) {
+		    description += "  ";
+		} else {
+		    description += "[]";
+		}
+	    }
+	    description += "\n";
+	}
+	
+	return description;
     }
 }
