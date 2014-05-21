@@ -41,6 +41,10 @@ public class Game {
 	currentPiece.setPosition(startPosition);
     }
 
+    public int[][] getWell() {
+	return this.well;
+    }
+
     public boolean checkConflict() {
 	
 	for (int i = 0; i < 4; i++) {
