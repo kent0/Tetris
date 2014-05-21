@@ -1,0 +1,1 @@
+This project is a Java implementation of Tetris. I have previously created a Java Tetris, but I decided to re-create a better version from scratch. No individual may use or modify any part of the code for profit.
