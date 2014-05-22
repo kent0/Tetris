@@ -3,10 +3,12 @@ import java.lang.String;
 public class Game {
     int[][] well;
     Tetromino currentPiece;
+    boolean gameIsOver;
 
     public Game() {
 	this.newPiece();
-	well = new int[22][10];
+	this.gameIsOver = false;
+	this.well = new int[22][10];
 	
 	for (int i = 0; i < well.length; i++) {
 	    for (int j = 0; j < well[0].length; j++) {
