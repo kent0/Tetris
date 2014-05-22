@@ -13,8 +13,6 @@ public class Game {
 		this.well[i][j] = 0;
 	    }
 	}
-
-	currentPiece.setPosition(startPosition);
     }
 
     public int[][] getWell() {
@@ -60,7 +58,8 @@ public class Game {
 	default:
 	    break;   
 	}
-	
+
+	currentPiece.setPosition(startPosition);
     }
 
     public String toString() {
