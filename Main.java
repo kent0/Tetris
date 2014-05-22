@@ -27,7 +27,7 @@ public class Main {
 	timer.start();
     }
 
-    class TimerListener implements ActionListener {
+    static class TimerListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 	    System.out.println("Test");
 	    panel.repaint();
