@@ -4,13 +4,14 @@ import java.awt.event.*;
 
 public class Main {
     static TPanel panel;
+    static Game game;
     
     public static void main(String[] args){
 	JFrame frame = new JFrame("Tetris");
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.setSize(480,768);
 
-	Game game = new Game();
+	game = new Game();
 
 	panel = new TPanel(game);
 	panel.setBackground(Color.YELLOW);
@@ -29,8 +30,10 @@ public class Main {
 
     static class TimerListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
-	    System.out.println("Test");
 	    panel.repaint();
+	    System.out.println(":");
 	}
-    }   
+    }
+
+    
 }
