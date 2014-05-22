@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.event.*;
 
 public class Main {
+    static TPanel panel;
     
     public static void main(String[] args){
 	JFrame frame = new JFrame("Tetris");
@@ -11,7 +12,7 @@ public class Main {
 
 	Game game = new Game();
 
-	TPanel panel = new TPanel(game);
+	panel = new TPanel(game);
 	panel.setBackground(Color.YELLOW);
 	panel.setSize(360,720);
 
@@ -21,6 +22,15 @@ public class Main {
 	Tetromino.test();
 	
 	System.out.println(game.toString());
+
+	Timer timer = new Timer(1000, new TimerListener());
+	timer.start();
     }
+
+    class TimerListener implements ActionListener {
+	public void actionPerformed(ActionEvent e) {
+	    System.out.println("Test");
+	    panel.repaint();
+	}
+    }   
 }
-    
