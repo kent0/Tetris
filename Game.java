@@ -6,7 +6,7 @@ public class Game {
     boolean gameIsOver;
 
     public Game() {
-	this.newPiece();
+	this.nextPiece();
 	this.gameIsOver = false;
 	this.well = new int[22][10];
 	
@@ -35,7 +35,7 @@ public class Game {
 	return true;
     }
 
-    private void newPiece() {
+    private void nextPiece() {
 	this.currentPiece = new Tetromino();
 
 	int[] startPosition = {0,0};
@@ -62,6 +62,8 @@ public class Game {
 	}
 
 	currentPiece.setPosition(startPosition);
+
+	
     }
 
     public String toString() {
