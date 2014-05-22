@@ -45,17 +45,17 @@ public class Game {
 	    
 	case 2:
 	    startPosition[0] = 1;
-	    startPosition[1] = 9;
+	    startPosition[1] = 4;
 	    break;
 	    
 	case 3:
 	    startPosition[0] = 1;
-	    startPosition[1] = 8;
+	    startPosition[1] = 3;
 	    break;
 
 	case 4:
 	    startPosition[0] = 0;
-	    startPosition[1] = 8;
+	    startPosition[1] = 3;
 	    break;
 
 	default:
@@ -66,6 +66,9 @@ public class Game {
 
 	for (int i = 0; i < 4; i++) {
 	    int[] target = {this.currentPiece.getPosition()[0]+this.currentPiece.configuration()[i][0],this.currentPiece.getPosition()[1]+this.currentPiece.configuration()[i][1]};
+	    System.out.println(this.currentPiece);
+	    System.out.println(target[0]);
+	    System.out.println(target[1]);
 	    if (this.well[target[0]][target[1]] == 0) {
 		this.well[target[0]][target[1]] = 1;
 	    } else {
