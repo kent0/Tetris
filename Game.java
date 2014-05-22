@@ -64,19 +64,15 @@ public class Game {
 
 	currentPiece.setPosition(startPosition);
 
-	for (int i = 0; i < this.well.length; i++) {
-	    for (int j = 0; j < this.well[0].length; j++) {
-		int[] target = {this.currentPiece.getPosition()[0]+i,this.currentPiece.getPosition()[1]+j};
-		if (this.well[target[0]][target[1]] == 0) {
-		    this.well[target[0]][target[1]] = this.currentPiece.getShape()[i][j];
-		} else {
-		    this.gameIsOver = true;
-		    return;
-		}
-	    }
+	for (int i = 0; i < 4; i++) {
+	    int[] target = {this.currentPiece.getPosition()[0]+this.currentPiece.configuration()[i][0],this.currentPiece.getPosition()[1]+this.currentPiece.configuration()[i][1]};
+	    if (this.well[target[0]][target[1]] == 0) {
+		this.well[target[0]][target[1]] = 1;
+	    } else {
+		this.gameIsOver = true;
+		return;
+	    }   
 	}
-
-	
     }
 
     public String toString() {
