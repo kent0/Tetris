@@ -6,7 +6,6 @@ public class Game {
     boolean gameIsOver;
 
     public Game() {
-	this.nextPiece();
 	this.gameIsOver = false;
 	this.well = new int[22][10];
 	
@@ -15,6 +14,8 @@ public class Game {
 		this.well[i][j] = 0;
 	    }
 	}
+
+	this.nextPiece();
     }
 
     public int[][] getWell() {
@@ -62,6 +63,18 @@ public class Game {
 	}
 
 	currentPiece.setPosition(startPosition);
+
+	for (int i = 0; i < this.well.length; i++) {
+	    for (int j = 0; j < this.well[0].length; j++) {
+		int[] target = {this.currentPiece.getPosition()[0]+i,this.currentPiece.getPosition()[1]+j};
+		if (this.well[target[0]][target[1]] == 0) {
+		    this.well[target[0]][target[1]] = this.currentPiece.getShape()[i][j];
+		} else {
+		    this.gameIsOver = true;
+		    return;
+		}
+	    }
+	}
 
 	
     }
