@@ -20,7 +20,7 @@ public class TPanel extends JPanel {
 
 	for (int i = 0; i < 20; i++) {
 	    for (int j = 0; j < 10; j++) {
-		if (gameCopy.getwell()[i+2][j] != 0) {
+		if (gameCopy.getWell()[i+2][j] != 0) {
 		    g.fillRect(origin[0]+36*(i+2),origin[1]+36*j,36,36);
 		}
 	    }
