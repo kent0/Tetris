@@ -15,13 +15,14 @@ public class TPanel extends JPanel {
 
     public void paintComponent(Graphics g) {
 	super.paintComponent(g);
+	System.out.println(gameCopy);
 
        	g.drawRect(0,0,wellWidth,wellHeight);
 
 	for (int i = 0; i < 20; i++) {
 	    for (int j = 0; j < 10; j++) {
 		if (gameCopy.getWell()[i+2][j] != 0) {
-		    g.fillRect(origin[0]+36*(i+2),origin[1]+36*j,36,36);
+		    g.fillRect(origin[1]+36*(j),origin[0]+36*i,36,36);
 		}
 	    }
 	}
