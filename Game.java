@@ -136,9 +136,26 @@ public class Game {
 	}
     }
 
+    public void clean() {
+	search:
+	for (int i = 2; i < 22; i++) {
+	    for (int j = 0; j < 10; j++) {
+		if (this.well[i][j] == 0) {
+		    continue search;
+		}
+	    }
+	    for (int j = i - 1; j > 0; j--) {
+		for (int k = 0; k < 10; k++) {
+		    this.well[j+1][k] = this.well[j][k];
+		}
+	    }						    
+	}
+    }
+
     public void tick() {
 	if (!this.gameIsOver) {
 	    if (!this.down()) {
+		this.clean();
 		this.nextPiece();
 	    }
 	}
