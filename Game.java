@@ -73,7 +73,12 @@ public class Game {
     }
 
     public boolean up() {
-	return this.move(new int[]{-1,0},0);
+	boolean didMove = false;
+	while (this.move(new int[]{1,0},0)) {
+	    didMove = true;
+	}
+	this.tick();
+	return didMove;
     }
 
     public boolean down() {
