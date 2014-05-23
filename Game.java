@@ -2,19 +2,25 @@ import java.lang.String;
 
 public class Game {
     private int[][] well;
+    private Tetromino[] tetrominos;
     private Tetromino currentPiece;
     private Tetromino[] nextPieces;
     private int line, score;
     private boolean gameIsOver;
 
     public Game() {
-	this.gameIsOver = false;
 	this.well = new int[22][10];
 	
 	for (int i = 0; i < well.length; i++) {
 	    for (int j = 0; j < well[0].length; j++) {
 		this.well[i][j] = 0;
 	    }
+	}
+
+	this.tetrominos = new Tetromino[4];
+
+	for (int i = 1; i < this.tetrominos.length; i++) {
+	    this.tetrominos[i] = new Tetromino();
 	}
 
 	nextPieces = new Tetromino[5];
@@ -74,8 +80,8 @@ public class Game {
     private boolean wellConflict() {
 	for (int i = 0; i < 4; i++) {
 	    int[] target = new int[2];
-	    target[0] = this.currentPiece.getPosition()[0] + this.currentPiece.configuration()[i][0];
-	    target[1] = this.currentPiece.getPosition()[1] + this.currentPiece.configuration()[i][1];
+	    target[0] = this.tetrominos[0].getPosition()[0] + this.tetrominos[0].configuration()[i][0];
+	    target[1] = this.tetrominos[0].getPosition()[1] + this.tetrominos[0].configuration()[i][1];
 	    if (target[0] < 0 || target[0] > 21 || target[1] < 0 || target[1] > 9 || well[target[0]][target[1]] > 0) {
 		System.out.println("Conflict @ (" + target[0] + ", " + target[1] + ")");
 		return true;
@@ -87,7 +93,7 @@ public class Game {
 
     private void placeTile(int color) {
 	for (int i = 0; i < 4; i++) {
-	    int[] target = {this.currentPiece.getPosition()[0]+this.currentPiece.configuration()[i][0],this.currentPiece.getPosition()[1]+this.currentPiece.configuration()[i][1]};
+	    int[] target = {this.tetrominos[0].getPosition()[0]+this.tetrominos[0].configuration()[i][0],this.tetrominos[0].getPosition()[1]+this.tetrominos[0].configuration()[i][1]};
 	    if (target[0] >= 0 && target[0] < 22 && target[1] >= 0 && target[1] < 10) {
 		this.well[target[0]][target[1]] = color;
 	    } 
@@ -95,27 +101,27 @@ public class Game {
     }
 
     private void placeShadow(boolean yes) {
-	int[] position = this.currentPiece.getPosition();
+	int[] position = this.tetrominos[0].getPosition();
 	this.drop();
 	this.placeTile(yes ? -1 : 0);
-	this.currentPiece.setPosition(position);
+	this.tetrominos[0].setPosition(position);
     }       
 
     private boolean move(int[] translation, int rotation) {
 	if (!(rotation == 0)) {
-	    this.currentPiece.rotate(rotation == 1);
+	    this.tetrominos[0].rotate(rotation == 1);
 	    if (this.wellConflict()) {
 		if (!this.move(new int[]{0,1},0) && !this.move(new int[]{0,-1},0)) {
-		    this.currentPiece.rotate(rotation == -1);
+		    this.tetrominos[0].rotate(rotation == -1);
 		    return false;
 		}
 	    }
 	} else {
 	    if (translation.length == 2) {
-		this.currentPiece.translate(translation);
+		this.tetrominos[0].translate(translation);
 		if (this.wellConflict()) {
-		    System.out.println(this.currentPiece);
-		    this.currentPiece.translate(new int[]{-translation[0], -translation[1]});
+		    System.out.println(this.tetrominos[0]);
+		    this.tetrominos[0].translate(new int[]{-translation[0], -translation[1]});
 		    return false;
 		}
 	    }
@@ -129,7 +135,7 @@ public class Game {
 	placeShadow(false);
 	didMove = move(translation, rotation);
 	placeShadow(true);
-	placeTile(this.currentPiece.type());
+	placeTile(this.tetrominos[0].type());
 	return didMove;
     }
 
@@ -144,7 +150,7 @@ public class Game {
     public void up() {
 	placeTile(0);
 	this.drop();
-	placeTile(this.currentPiece.type());
+	placeTile(this.tetrominos[0].type());
 	this.tick();
     }
 
@@ -169,7 +175,13 @@ public class Game {
     }
 
     private void nextPiece() {
-	this.currentPiece = this.nextPieces[0];
+	for (int i = 0; i < this.tetrominos.length - 1; i++) {
+	    this.tetrominos[i] = this.tetrominos[i+1];
+	}
+
+	this.tetrominos[this.tetrominos.length - 1] = new Tetromino();
+	
+	this.tetrominos[0] = this.nextPieces[0];
 
 	for (int i = 0; i < this.nextPieces.length - 1; i++) {
 	    this.nextPieces[i] = this.nextPieces[i+1];
@@ -179,7 +191,7 @@ public class Game {
 	
 	int[] startPosition = {0,0};
 	
-	switch (currentPiece.getShape().length) {
+	switch (tetrominos[0].getShape().length) {
 	    
 	case 2:
 	    startPosition[0] = 1;
@@ -200,13 +212,15 @@ public class Game {
 	    break;   
 	}
 
-	currentPiece.setPosition(startPosition);
+	this.tetrominos[0].setPosition(startPosition);
+
+	tetrominos[0].setPosition(startPosition);
 
 	if (this.wellConflict()) {
 	    this.gameIsOver = true;
 	} else {
 	    this.placeShadow(true);
-	    this.placeTile(this.currentPiece.type());
+	    this.placeTile(this.tetrominos[0].type());
 	}
     }
 

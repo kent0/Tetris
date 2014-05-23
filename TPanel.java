@@ -5,9 +5,22 @@ public class TPanel extends JPanel {
     private int[] origin;
     private int wellWidth = 360;
     private int wellHeight = 720;
+    private JLabel scoreLabel, lineLabel, levelLabel;
     private Game gameCopy;
     
     public TPanel(Game game) {
+	scoreLabel = new JLabel("Score: ");
+	lineLabel = new JLabel("Line: ");
+	levelLabel = new JLabel("Level: ");
+
+	scoreLabel.setForeground(Color.DARK_GRAY);
+	lineLabel.setForeground(Color.DARK_GRAY);
+	levelLabel.setForeground(Color.DARK_GRAY);
+
+	this.add(scoreLabel);
+	this.add(lineLabel);
+	this.add(levelLabel);
+	
 	this.gameCopy = game;
 	this.origin = new int[]{0,0};
 	this.setBackground(Color.BLACK);
@@ -81,4 +94,12 @@ public class TPanel extends JPanel {
 	}
 					 
     }
+
+    public void update() {
+	this.scoreLabel.setText("Score: " + this.gameCopy.getScore());
+	this.levelLabel.setText("Level: " + this.gameCopy.level());
+	this.lineLabel.setText("Line: " + this.gameCopy.getLine());
+	this.repaint();
+    }
+	
 }
