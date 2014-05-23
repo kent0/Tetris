@@ -22,7 +22,7 @@ public class Game {
 	return this.well;
     }
 
-    public boolean wellConflict() {
+    private boolean wellConflict() {
 	
 	for (int i = 0; i < 4; i++) {
 	    int[] target = new int[2];
@@ -36,14 +36,14 @@ public class Game {
 	return false;
     }
 
-    public void placePiece(boolean yes) {
+    private void placePiece(boolean yes) {
 	for (int i = 0; i < 4; i++) {
 	    this.well[this.currentPiece.getPosition()[0]+this.currentPiece.configuration()[i][0]][this.currentPiece.getPosition()[1]+this.currentPiece.configuration()[i][1]] = yes ? 1 : 0;
 	}
     }
 
     // movements
-    public boolean move(int[] translation, int rotation) {
+    private boolean move(int[] translation, int rotation) {
 	if (!(rotation == 0)) {
 	    this.placePiece(false);
 	    this.currentPiece.rotate(rotation == 1);
@@ -123,6 +123,12 @@ public class Game {
 
 	this.gameIsOver = this.wellConflict() ? true : false;
 	this.placePiece(!this.gameIsOver);
+    }
+
+    public void tick() {
+	if (!this.down()) {
+	    this.nextPiece();
+	}
     }
     
     public String toString() {
