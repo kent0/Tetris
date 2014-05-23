@@ -1,9 +1,9 @@
 import java.lang.String;
 
 public class Game {
-    int[][] well;
-    Tetromino currentPiece;
-    boolean gameIsOver;
+    private int[][] well;
+    private Tetromino currentPiece;
+    private boolean gameIsOver;
 
     public Game() {
 	this.gameIsOver = false;
@@ -19,7 +19,29 @@ public class Game {
     }
 
     public int[][] getWell() {
-	return this.well;
+	int[][] wellCopy = new int[22][10];
+
+	for (int i = 0; i < wellCopy.length; i++) {
+	    for (int j = 0; j < wellCopy[0].length; j++) {
+		wellCopy[i][j] = this.well[i][j];
+	    }
+	}
+	
+	return wellCopy;
+    }
+
+    public void setWell(int[][] well) {
+	if (well.length != this.well.length) {
+	    return;
+	}
+
+	for (int i = 0; i < well.length; i++) {
+	    if (well[i].length != this.well[i].length) {
+		return;
+	    }
+	}
+
+	this.well = well;
     }
 
     private boolean wellConflict() {
@@ -133,7 +155,7 @@ public class Game {
 	}
     }
 
-    public void clean() {
+    private void clean() {
 	search:
 	for (int i = 2; i < 22; i++) {
 	    for (int j = 0; j < 10; j++) {

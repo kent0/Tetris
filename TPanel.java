@@ -2,10 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class TPanel extends JPanel {
-    int[] origin;
-    final int wellWidth = 360;
-    final int wellHeight = 720;
-    Game gameCopy;
+    private int[] origin;
+    private int wellWidth = 360;
+    private int wellHeight = 720;
+    private Game gameCopy;
     
     public TPanel(Game game) {
 	this.gameCopy = game;

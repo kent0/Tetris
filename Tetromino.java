@@ -34,8 +34,8 @@ public class Tetromino {
       {0,0,0}}
 };
 
-    int[][] shape;
-    int[] position;
+    private int[][] shape;
+    private int[] position;
 
     public Tetromino() {
 	this.shape = generator();
@@ -43,7 +43,13 @@ public class Tetromino {
     }
 
     public int[][] getShape() {
-	return this.shape;
+	int[][] shapeCopy = new int[this.shape.length][this.shape[0].length];
+	for (int i = 0; i < shapeCopy.length; i++) {
+	    for (int j = 0; j < shapeCopy[i].length; j++) {
+		shapeCopy[i][j] = this.shape[i][j];
+	    }
+	}
+	return shapeCopy;
     }
 
     private void setShape(int[][] shape) {
@@ -137,7 +143,7 @@ public class Tetromino {
     public String toString() {
 	String description = "";
 	
-	for (int[] row : this.shape) {
+	for (int[] row : this.getShape()) {
 	    for (int element : row) {
 		if (element == 0) {
 		    description += "  ";
