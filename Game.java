@@ -66,13 +66,22 @@ public class Game {
 	}
     }
 
+    private void placeShadow(boolean yes) {
+	int[] position = this.currentPiece.getPosition();
+	this.drop();
+	this.placeTile(yes ? -1 : 0);
+	this.currentPiece.setPosition(position);
+    }       
+
     private boolean move(int[] translation, int rotation) {
 	if (!(rotation == 0)) {
 	    this.placeTile(0);
+	    //this.placeShadow(false);
 	    this.currentPiece.rotate(rotation == 1);
 	    if (this.wellConflict()) {
 		if (!this.move(new int[]{0,1},0) && !this.move(new int[]{0,-1},0)) {
 		    this.currentPiece.rotate(rotation == -1);
+		    //this.placeShadow(true);
 		    this.placeTile(this.currentPiece.type());
 		    return false;
 		}
@@ -83,20 +92,27 @@ public class Game {
 		this.currentPiece.translate(translation);
 		if (this.wellConflict()) {
 		    this.currentPiece.translate(new int[]{-translation[0], -translation[1]});
+		    //this.placeShadow(true);
 		    this.placeTile(this.currentPiece.type());
 		    return false;
 		}
 	    }
 	}
+	//this.placeShadow(true);
 	this.placeTile(this.currentPiece.type());
 	return true;
     }
 
-    public boolean up() {
+    private boolean drop() {
 	boolean didMove = false;
 	while (this.move(new int[]{1,0},0)) {
 	    didMove = true;
 	}
+	return didMove;
+    }
+
+    public boolean up() {
+	boolean didMove = this.drop();
 	this.tick();
 	return didMove;
     }
