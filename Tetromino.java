@@ -67,9 +67,9 @@ public class Tetromino {
         return TETROMINOS[randomNumber];
     }
 
-    public void move(int[] movement) {
-	if (movement.length == 2) {
-	    this.setPosition(new int[]{this.getPosition()[0]+movement[0],this.getPosition()[1]+movement[1]});
+    public void translate(int[] translation) {
+	if (translation.length == 2) {
+	    this.setPosition(new int[]{this.getPosition()[0]+translation[0],this.getPosition()[1]+translation[1]});
 	}
     }
 	
