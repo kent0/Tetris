@@ -85,6 +85,14 @@ public class Game {
 	return this.move(new int[]{0,-1},0);
     }
 
+    public boolean clockTurn() {
+	return this.move(new int[]{0,0},1);
+    }
+
+    public boolean counterTurn() {
+	return this.move(new int[]{0,0},-1);
+    }
+
     private void nextPiece() {
 	this.currentPiece = new Tetromino();
 
