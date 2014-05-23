@@ -15,7 +15,6 @@ public class Main {
 	game = new Game();
 
 	panel = new TPanel(game);
-	panel.setBackground(Color.YELLOW);
 	panel.setSize(360,720);
 	panel.setFocusable(true);
 	panel.addKeyListener(new KeyListener() {
