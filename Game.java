@@ -36,6 +36,12 @@ public class Game {
 	return false;
     }
 
+    public void placePiece(boolean yes) {
+	for (int i = 0; i < 4; i++) {
+	    this.well[this.currentPiece.position()[0]+this.currentPiece.configuration()[i][0]][this.currentPiece.position()[1]+this.currentPiece.configuration()[i][1]] = yes ? 1 : 0;
+	}
+    }
+
     // movements
     public boolean move(int[] translation, int rotation) {
 	if (!(rotation == 0)) {
