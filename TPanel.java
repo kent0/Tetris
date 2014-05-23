@@ -9,7 +9,7 @@ public class TPanel extends JPanel {
     
     public TPanel(Game game) {
 	this.gameCopy = game;
-	origin = new int[]{0,0};
+	this.origin = new int[]{0,0};
 	setBorder(BorderFactory.createLineBorder(Color.black));
     }
 
