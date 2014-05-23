@@ -1,3 +1,4 @@
+
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
@@ -21,8 +22,6 @@ public class Main {
 	frame.setVisible(true);
 
 	Tetromino.test();
-	
-	System.out.println(game.toString());
 
 	Timer timer = new Timer(1000, new TimerListener());
 	timer.start();
@@ -32,6 +31,7 @@ public class Main {
 	public void actionPerformed(ActionEvent e) {
 	    panel.repaint();
 	    System.out.println(":");
+	    game.down();
 	}
     }
 
