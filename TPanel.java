@@ -17,7 +17,7 @@ public class TPanel extends JPanel {
 	super.paintComponent(g);
 	System.out.println(gameCopy);
 
-	g.setColor(Color.GRAY);
+	g.setColor(Color.DARK_GRAY);
        	g.drawRect(0,0,wellWidth,wellHeight);
 
 	for (int i = 0; i < 20; i++) {
@@ -66,7 +66,7 @@ public class TPanel extends JPanel {
 	    }
 	}
 
-	g.setColor(Color.GRAY);
+	g.setColor(Color.DARK_GRAY);
 	
 	for (int i = 0; i < 20; i++) {
 	    g.drawLine(origin[1],origin[0]+36*i,origin[1]+wellWidth,origin[0]+36*i);
