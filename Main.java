@@ -45,12 +45,12 @@ public class Main {
 			    break;
 
 			case KeyEvent.VK_J:
-			    game.clockTurn();
+			    game.counterTurn();
 			    panel.repaint();
 			    break;
 
 			case KeyEvent.VK_K:
-			    game.counterTurn();
+			    game.clockTurn();
 			    panel.repaint();
 			    break;
 			    
