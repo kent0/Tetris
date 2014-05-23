@@ -121,8 +121,11 @@ public class Game {
 
 	currentPiece.setPosition(startPosition);
 
-	this.gameIsOver = this.wellConflict() ? true : false;
-	this.placePiece();
+	if (this.wellConflict()) {
+	    this.gameIsOver = true;
+	} else {
+	    this.placePiece(true);
+	}
     }
 
     public void tick() {
