@@ -211,6 +211,7 @@ public class Game {
     }
 
     private void clean() {
+	int removedLines = 0;
 	search:
 	for (int i = 2; i < 22; i++) {
 	    for (int j = 0; j < 10; j++) {
@@ -223,8 +224,34 @@ public class Game {
 		for (int k = 0; k < 10; k++) {
 		    this.well[j+1][k] = this.well[j][k];
 		}
-	    }						    
+	    }
+
+	    removedLines++;
 	}
+
+	switch (removedLines) {
+
+	case 1:
+	    this.score += 100 * (this.level() + 1);
+	    break;
+	    
+	case 2:
+	    this.score += 300 * (this.level() + 1);
+	    break;
+
+	case 3:
+	    this.score += 500 * (this.level() + 1);
+	    break;
+
+	case 4:
+	    this.score += 800 * (this.level() + 1);
+	    break;
+
+	default:
+	    break;
+	}
+
+	this.line += removedLines;
     }
 
     public void tick() {
