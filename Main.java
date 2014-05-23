@@ -25,6 +25,8 @@ public class Main {
 		    	switch (e.getExtendedKeyCode()) {
 	    
 			case KeyEvent.VK_W:
+			    game.up();
+			    panel.repaint();
 			    break;
 			    
 			case KeyEvent.VK_A:
@@ -61,9 +63,7 @@ public class Main {
 		public void keyReleased(KeyEvent e) {}
 
 		@Override
-		public void keyPressed(KeyEvent e) {
-		    System.out.println("Pressed " + e.getKeyChar());
-		}
+		public void keyPressed(KeyEvent e) {}
 	    });
 
 	frame.add(panel);
