@@ -25,32 +25,32 @@ public class Main {
 	    
 			case KeyEvent.VK_W:
 			    game.up();
-			    panel.repaint();
+			    panel.update();
 			    break;
 			    
 			case KeyEvent.VK_A:
 			    game.left();
-			    panel.repaint();
+			    panel.update();
 			    break;
 			    
 			case KeyEvent.VK_S:
 			    game.down();
-			    panel.repaint();
+			    panel.update();
 			    break;
 			    
 			case KeyEvent.VK_D:
 			    game.right();
-			    panel.repaint();
+			    panel.update();
 			    break;
 
 			case KeyEvent.VK_J:
 			    game.counterTurn();
-			    panel.repaint();
+			    panel.update();
 			    break;
 
 			case KeyEvent.VK_K:
 			    game.clockTurn();
-			    panel.repaint();
+			    panel.update();
 			    break;
 			    
 			default:
@@ -76,8 +76,8 @@ public class Main {
 
     static class TimerListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
-	    panel.repaint();
 	    game.tick();
+	    panel.update();
 	}
     }
 
