@@ -22,17 +22,39 @@ public class Game {
 	return this.well;
     }
 
-    public boolean checkConflict() {
+    public boolean wellConflict() {
 	
 	for (int i = 0; i < 4; i++) {
 	    int[] target = new int[2];
 	    target[0] = this.currentPiece.getPosition()[0] + this.currentPiece.configuration()[i][0];
 	    target[1] = this.currentPiece.getPosition()[1] + this.currentPiece.configuration()[i][1];
 	    if (target[0] < 0 || target[0] > 21 || target[1] < 0 || target[1] > 9 || well[target[0]][target[1]] != 0) {
-		return false;
+		return true;
 	    }
 	}
 
+	return false;
+    }
+
+    // movements
+    public boolean move(int[] translation, int rotation) {
+	if (rotation) {
+	    this.currentPiece.rotate(rotation + 1);
+	    if (this.wellConflict()) {
+		if (!this.move(int[]{0,1},0) && !this.move(int[]{0,-1},0)) {
+		    this.currentPiece.rotate(!(rotate + 1));
+		    return false;
+		}
+	    }
+	} else {
+	    if (translation.length == 2) {
+		this.currentPiece.translate(translation);
+		if (this.wellConflict()) {
+		    this.currentPiece.translate(new int[]{-translation[0], -translation[1]});
+		    return false;
+		}
+	    }
+	}
 	return true;
     }
 
@@ -77,7 +99,7 @@ public class Game {
 	    }   
 	}
     }
-
+    
     public String toString() {
 	String description = "";
 	description += "Well: \n";
