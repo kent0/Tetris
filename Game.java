@@ -122,12 +122,14 @@ public class Game {
 	currentPiece.setPosition(startPosition);
 
 	this.gameIsOver = this.wellConflict() ? true : false;
-	this.placePiece(!this.gameIsOver);
+	this.placePiece();
     }
 
     public void tick() {
-	if (!this.down()) {
-	    this.nextPiece();
+	if (!this.gameIsOver) {
+	    if (!this.down()) {
+		this.nextPiece();
+	    }
 	}
     }
     

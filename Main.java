@@ -30,8 +30,7 @@ public class Main {
     static class TimerListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 	    panel.repaint();
-	    System.out.println(":");
-	    game.down();
+	    game.tick();
 	}
     }
 
