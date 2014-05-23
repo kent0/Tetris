@@ -38,7 +38,7 @@ public class Game {
 
     public void placePiece(boolean yes) {
 	for (int i = 0; i < 4; i++) {
-	    this.well[this.currentPiece.position()[0]+this.currentPiece.configuration()[i][0]][this.currentPiece.position()[1]+this.currentPiece.configuration()[i][1]] = yes ? 1 : 0;
+	    this.well[this.currentPiece.getPosition()[0]+this.currentPiece.configuration()[i][0]][this.currentPiece.getPosition()[1]+this.currentPiece.configuration()[i][1]] = yes ? 1 : 0;
 	}
     }
 
@@ -92,18 +92,8 @@ public class Game {
 
 	currentPiece.setPosition(startPosition);
 
-	for (int i = 0; i < 4; i++) {
-	    int[] target = {this.currentPiece.getPosition()[0]+this.currentPiece.configuration()[i][0],this.currentPiece.getPosition()[1]+this.currentPiece.configuration()[i][1]};
-	    System.out.println(this.currentPiece);
-	    System.out.println(target[0]);
-	    System.out.println(target[1]);
-	    if (this.well[target[0]][target[1]] == 0) {
-		this.well[target[0]][target[1]] = 1;
-	    } else {
-		this.gameIsOver = true;
-		return;
-	    }   
-	}
+	this.gameIsOver = this.wellConflict() ? true : false;
+	this.placePiece(!this.gameIsOver);
     }
     
     public String toString() {
