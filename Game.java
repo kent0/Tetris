@@ -69,6 +69,22 @@ public class Game {
 	return true;
     }
 
+    public boolean up() {
+	return this.move(new int[]{-1,0},0);
+    }
+
+    public boolean down() {
+	return this.move(new int[]{1,0},0);
+    }
+
+    public boolean right() {
+	return this.move(new int[]{0,1},0);
+    }
+
+    public boolean left() {
+	return this.move(new int[]{0,-1},0);
+    }
+
     private void nextPiece() {
 	this.currentPiece = new Tetromino();
 
