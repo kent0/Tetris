@@ -27,6 +27,10 @@ public class TPanel extends JPanel {
 		    
 		    switch (gameCopy.getWell()[i+2][j]) {
 			
+		    case -1:
+			brushColor = Color.LIGHT_GRAY;
+			break;
+			
 		    case 1:
 			brushColor = Color.CYAN;
 			break;
