@@ -158,6 +158,8 @@ public class Tetromino {
 	    
 	    description += "\n";
 	}
+
+	description += "(" + this.getPosition()[0] + ", " + this.getPosition()[1] + ")\n";
 	
 	return description;
     }
