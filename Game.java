@@ -4,6 +4,7 @@ public class Game {
     private int[][] well;
     private Tetromino currentPiece;
     private Tetromino[] nextPieces;
+    private int line, score;
     private boolean gameIsOver;
 
     public Game() {
@@ -47,8 +48,27 @@ public class Game {
 		return;
 	    }
 	}
-
 	this.well = well;
+    }
+
+    public int getLine() {
+	return this.line;
+    }
+
+    public void setLine(int line) {
+	this.line = line;
+    }
+
+    public int getScore() {
+	return this.score;
+    }
+
+    public void setScore(int score) {
+	this.score = score;
+    }
+
+    public int level() {
+	return line / 10;
     }
 
     private boolean wellConflict() {
@@ -185,6 +205,7 @@ public class Game {
 	if (this.wellConflict()) {
 	    this.gameIsOver = true;
 	} else {
+	    this.placeShadow(true);
 	    this.placeTile(this.currentPiece.type());
 	}
     }
