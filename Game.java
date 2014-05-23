@@ -44,7 +44,6 @@ public class Game {
 	}
     }
 
-    // movements
     private boolean move(int[] translation, int rotation) {
 	if (!(rotation == 0)) {
 	    this.placePiece(false);
