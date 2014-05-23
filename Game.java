@@ -49,7 +49,8 @@ public class Game {
 	    int[] target = new int[2];
 	    target[0] = this.currentPiece.getPosition()[0] + this.currentPiece.configuration()[i][0];
 	    target[1] = this.currentPiece.getPosition()[1] + this.currentPiece.configuration()[i][1];
-	    if (target[0] < 0 || target[0] > 21 || target[1] < 0 || target[1] > 9 || well[target[0]][target[1]] != 0) {
+	    if (target[0] < 0 || target[0] > 21 || target[1] < 0 || target[1] > 9 || well[target[0]][target[1]] > 0) {
+		System.out.println("Conflict @ (" + target[0] + ", " + target[1] + ")");
 		return true;
 	    }
 	}
@@ -75,33 +76,34 @@ public class Game {
 
     private boolean move(int[] translation, int rotation) {
 	if (!(rotation == 0)) {
-	    this.placeTile(0);
-	    //this.placeShadow(false);
 	    this.currentPiece.rotate(rotation == 1);
 	    if (this.wellConflict()) {
 		if (!this.move(new int[]{0,1},0) && !this.move(new int[]{0,-1},0)) {
 		    this.currentPiece.rotate(rotation == -1);
-		    //this.placeShadow(true);
-		    this.placeTile(this.currentPiece.type());
 		    return false;
 		}
 	    }
 	} else {
 	    if (translation.length == 2) {
-		this.placeTile(0);
-		//this.placeShadow(false);
 		this.currentPiece.translate(translation);
 		if (this.wellConflict()) {
+		    System.out.println(this.currentPiece);
 		    this.currentPiece.translate(new int[]{-translation[0], -translation[1]});
-		    //this.placeShadow(true);
-		    this.placeTile(this.currentPiece.type());
 		    return false;
 		}
 	    }
 	}
-	//this.placeShadow(true);
-	this.placeTile(this.currentPiece.type());
 	return true;
+    }
+
+    private boolean cleanMovePlace(int[] translation, int rotation) {
+	boolean didMove;
+	placeTile(0);
+	placeShadow(false);
+	didMove = move(translation, rotation);
+	placeShadow(true);
+	placeTile(this.currentPiece.type());
+	return didMove;
     }
 
     private boolean drop() {
@@ -112,30 +114,31 @@ public class Game {
 	return didMove;
     }
 
-    public boolean up() {
-	boolean didMove = this.drop();
+    public void up() {
+	placeTile(0);
+	this.drop();
+	placeTile(this.currentPiece.type());
 	this.tick();
-	return didMove;
     }
 
     public boolean down() {
-	return this.move(new int[]{1,0},0);
+	return this.cleanMovePlace(new int[]{1,0},0);
     }
 
-    public boolean right() {
-	return this.move(new int[]{0,1},0);
+    public void right() {
+	this.cleanMovePlace(new int[]{0,1},0);
     }
 
-    public boolean left() {
-	return this.move(new int[]{0,-1},0);
+    public void left() {
+	this.cleanMovePlace(new int[]{0,-1},0);
     }
 
-    public boolean clockTurn() {
-	return this.move(new int[]{0,0},1);
+    public void clockTurn() {
+	this.cleanMovePlace(new int[]{0,0},1);
     }
 
-    public boolean counterTurn() {
-	return this.move(new int[]{0,0},-1);
+    public void counterTurn() {
+	this.cleanMovePlace(new int[]{0,0},-1);
     }
 
     private void nextPiece() {
