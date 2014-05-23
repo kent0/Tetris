@@ -3,6 +3,7 @@ import java.lang.String;
 public class Game {
     private int[][] well;
     private Tetromino currentPiece;
+    private Tetromino[] nextPieces;
     private boolean gameIsOver;
 
     public Game() {
@@ -13,6 +14,12 @@ public class Game {
 	    for (int j = 0; j < well[0].length; j++) {
 		this.well[i][j] = 0;
 	    }
+	}
+
+	nextPieces = new Tetromino[5];
+	    
+	for (int i = 0; i < this.nextPieces.length; i++) {
+	    this.nextPieces[i] = new Tetromino();
 	}
 
 	this.nextPiece();
@@ -142,7 +149,14 @@ public class Game {
     }
 
     private void nextPiece() {
-	this.currentPiece = new Tetromino();
+	this.currentPiece = this.nextPieces[0];
+
+	for (int i = 0; i < this.nextPieces.length - 1; i++) {
+	    this.nextPieces[i] = this.nextPieces[i+1];
+	}
+
+	this.nextPieces[this.nextPieces.length - 1] = new Tetromino();
+	
 	int[] startPosition = {0,0};
 	
 	switch (currentPiece.getShape().length) {
