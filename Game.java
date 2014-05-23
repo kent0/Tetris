@@ -23,7 +23,6 @@ public class Game {
     }
 
     private boolean wellConflict() {
-	
 	for (int i = 0; i < 4; i++) {
 	    int[] target = new int[2];
 	    target[0] = this.currentPiece.getPosition()[0] + this.currentPiece.configuration()[i][0];
@@ -103,7 +102,6 @@ public class Game {
 
     private void nextPiece() {
 	this.currentPiece = new Tetromino();
-
 	int[] startPosition = {0,0};
 	
 	switch (currentPiece.getShape().length) {
@@ -144,6 +142,7 @@ public class Game {
 		    continue search;
 		}
 	    }
+	    
 	    for (int j = i - 1; j > 0; j--) {
 		for (int k = 0; k < 10; k++) {
 		    this.well[j+1][k] = this.well[j][k];
@@ -175,10 +174,10 @@ public class Game {
 		    description += "[]";
 		}
 	    }
-	    
+       
 	    description += "||\n";
 	}
-
+	
 	description += "||";
 	
 	for (int i = 0; i < 20; i++) {
