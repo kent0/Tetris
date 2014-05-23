@@ -38,11 +38,11 @@ public class Game {
 
     // movements
     public boolean move(int[] translation, int rotation) {
-	if (rotation) {
-	    this.currentPiece.rotate(rotation + 1);
+	if (!(rotation == 0)) {
+	    this.currentPiece.rotate(rotation == 1);
 	    if (this.wellConflict()) {
-		if (!this.move(int[]{0,1},0) && !this.move(int[]{0,-1},0)) {
-		    this.currentPiece.rotate(!(rotate + 1));
+		if (!this.move(new int[]{0,1},0) && !this.move(new int[]{0,-1},0)) {
+		    this.currentPiece.rotate(rotation == -1);
 		    return false;
 		}
 	    }
