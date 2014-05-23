@@ -136,8 +136,12 @@ public class Tetromino {
 		}
 	    }
 	}
-
+	
 	return configuration;
+    }
+
+    public int type() {
+	return this.getShape()[this.configuration()[0][0]][this.configuration()[0][1]];
     }
 
     public String toString() {
