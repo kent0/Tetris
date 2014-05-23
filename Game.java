@@ -45,22 +45,27 @@ public class Game {
     // movements
     public boolean move(int[] translation, int rotation) {
 	if (!(rotation == 0)) {
+	    this.placePiece(false);
 	    this.currentPiece.rotate(rotation == 1);
 	    if (this.wellConflict()) {
 		if (!this.move(new int[]{0,1},0) && !this.move(new int[]{0,-1},0)) {
 		    this.currentPiece.rotate(rotation == -1);
+		    this.placePiece(true);
 		    return false;
 		}
 	    }
 	} else {
 	    if (translation.length == 2) {
+		this.placePiece(false);
 		this.currentPiece.translate(translation);
 		if (this.wellConflict()) {
 		    this.currentPiece.translate(new int[]{-translation[0], -translation[1]});
+		    this.placePiece(true);
 		    return false;
 		}
 	    }
 	}
+	this.placePiece(true);
 	return true;
     }
 
