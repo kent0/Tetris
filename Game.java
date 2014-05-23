@@ -57,38 +57,38 @@ public class Game {
 	return false;
     }
 
-    private void placePiece(boolean yes) {
+    private void placeTile(int color) {
 	for (int i = 0; i < 4; i++) {
 	    int[] target = {this.currentPiece.getPosition()[0]+this.currentPiece.configuration()[i][0],this.currentPiece.getPosition()[1]+this.currentPiece.configuration()[i][1]};
 	    if (target[0] >= 0 && target[0] < 22 && target[1] >= 0 && target[1] < 10) {
-		this.well[target[0]][target[1]] = yes ? this.currentPiece.type() : 0;
+		this.well[target[0]][target[1]] = color;
 	    } 
 	}
     }
 
     private boolean move(int[] translation, int rotation) {
 	if (!(rotation == 0)) {
-	    this.placePiece(false);
+	    this.placeTile(0);
 	    this.currentPiece.rotate(rotation == 1);
 	    if (this.wellConflict()) {
 		if (!this.move(new int[]{0,1},0) && !this.move(new int[]{0,-1},0)) {
 		    this.currentPiece.rotate(rotation == -1);
-		    this.placePiece(true);
+		    this.placeTile(this.currentPiece.type());
 		    return false;
 		}
 	    }
 	} else {
 	    if (translation.length == 2) {
-		this.placePiece(false);
+		this.placeTile(0);
 		this.currentPiece.translate(translation);
 		if (this.wellConflict()) {
 		    this.currentPiece.translate(new int[]{-translation[0], -translation[1]});
-		    this.placePiece(true);
+		    this.placeTile(this.currentPiece.type());
 		    return false;
 		}
 	    }
 	}
-	this.placePiece(true);
+	this.placeTile(this.currentPiece.type());
 	return true;
     }
 
@@ -151,7 +151,7 @@ public class Game {
 	if (this.wellConflict()) {
 	    this.gameIsOver = true;
 	} else {
-	    this.placePiece(true);
+	    this.placeTile(this.currentPiece.type());
 	}
     }
 
