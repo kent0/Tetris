@@ -61,7 +61,7 @@ public class Game {
 	for (int i = 0; i < 4; i++) {
 	    int[] target = {this.currentPiece.getPosition()[0]+this.currentPiece.configuration()[i][0],this.currentPiece.getPosition()[1]+this.currentPiece.configuration()[i][1]};
 	    if (target[0] >= 0 && target[0] < 22 && target[1] >= 0 && target[1] < 10) {
-		this.well[target[0]][target[1]] = yes ? 1 : 0;
+		this.well[target[0]][target[1]] = yes ? this.currentPiece.type() : 0;
 	    } 
 	}
     }
