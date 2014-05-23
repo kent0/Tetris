@@ -89,6 +89,7 @@ public class Game {
 	} else {
 	    if (translation.length == 2) {
 		this.placeTile(0);
+		//this.placeShadow(false);
 		this.currentPiece.translate(translation);
 		if (this.wellConflict()) {
 		    this.currentPiece.translate(new int[]{-translation[0], -translation[1]});
