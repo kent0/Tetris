@@ -41,6 +41,16 @@ public class Main {
 			    game.right();
 			    panel.repaint();
 			    break;
+
+			case KeyEvent.VK_J:
+			    game.clockTurn();
+			    panel.repaint();
+			    break;
+
+			case KeyEvent.VK_K:
+			    game.counterTurn();
+			    panel.repaint();
+			    break;
 			    
 			default:
 			    break;
