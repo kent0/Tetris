@@ -20,6 +20,8 @@ public class Game {
 	for (int i = 1; i < this.tetrominos.length-1; i++) {
 	    this.tetrominos[i] = new Tetromino();
 	}
+
+	this.tetrminos[this.tetrominos.length-1] = Tetromino.empty();
 	    
 	this.nextPiece();
     }
@@ -150,8 +152,10 @@ public class Game {
     }
 
     public void hold() {
-	
-    }
+	this.tetrominos[this.tetrominos.length-1] = this.tetrominos[0];
+	if (this.tetrominos[this.tetrominos.length-1].type() == 0) {
+	    this.nextPiece();
+	}
 
     private void nextPiece() {
 	for (int i = 0; i < this.tetrominos.length - 2; i++) {
