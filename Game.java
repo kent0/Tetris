@@ -21,7 +21,7 @@ public class Game {
 	    this.tetrominos[i] = new Tetromino();
 	}
 
-	this.tetrminos[this.tetrominos.length-1] = Tetromino.empty();
+	this.tetrominos[this.tetrominos.length-1] = Tetromino.empty();
 	    
 	this.nextPiece();
     }
@@ -152,10 +152,20 @@ public class Game {
     }
 
     public void hold() {
-	this.tetrominos[this.tetrominos.length-1] = this.tetrominos[0];
+	this.placeTile(0);
+	this.placeShadow(false);
+	Tetromino temp = this.tetrominos[0];
 	if (this.tetrominos[this.tetrominos.length-1].type() == 0) {
 	    this.nextPiece();
+	    this.tetrominos[this.tetrominos.length-1] = temp;
+	} else {
+	    this.tetrominos[0] = this.tetrominos[this.tetrominos.length-1];
+	    this.tetrominos[0].setPosition(this.startPosition(tetrominos[0]));
+	    this.tetrominos[this.tetrominos.length-1] = temp;
 	}
+	this.placeShadow(true);
+	this.placeTile(1);
+    }
 
     private void nextPiece() {
 	for (int i = 0; i < this.tetrominos.length - 2; i++) {
@@ -164,6 +174,17 @@ public class Game {
 
 	this.tetrominos[this.tetrominos.length - 2] = new Tetromino();
 	
+	this.tetrominos[0].setPosition(this.startPosition(tetrominos[0]));
+
+	if (this.wellConflict()) {
+	    this.gameIsOver = true;
+	} else {
+	    this.placeShadow(true);
+	    this.placeTile(this.tetrominos[0].type());
+	}
+    }
+
+    private int[] startPosition(Tetromino tetromino) {
 	int[] startPosition = {0,0};
 	
 	switch (tetrominos[0].getShape().length) {
@@ -187,14 +208,7 @@ public class Game {
 	    break;   
 	}
 
-	this.tetrominos[0].setPosition(startPosition);
-
-	if (this.wellConflict()) {
-	    this.gameIsOver = true;
-	} else {
-	    this.placeShadow(true);
-	    this.placeTile(this.tetrominos[0].type());
-	}
+	return startPosition;
     }
 
     private void clean() {
@@ -275,6 +289,10 @@ public class Game {
 	}
 
 	description += "||\n";
+
+	for (int i = 0; i < 5; i++) {
+	    description += this.tetrominos[i];
+	}
 
 	return description;
     }
