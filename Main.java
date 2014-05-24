@@ -51,6 +51,11 @@ public class Main {
 			    game.clockTurn();
 			    panel.update();
 			    break;
+
+			case KeyEvent.VK_L:
+			    game.hold();
+			    panel.update();
+			    break;
 			    
 			default:
 			    break;
