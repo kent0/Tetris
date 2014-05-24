@@ -75,22 +75,22 @@ public class Tetromino {
 
     public void translate(int[] translation) {
 	if (translation.length == 2) {
-	    this.setPosition(new int[]{this.getPosition()[0]+translation[0],this.getPosition()[1]+translation[1]});
+	    this.position = new int[]{this.position[0]+translation[0],this.position[1]+translation[1]};
 	}
     }
 	
     public void rotate(boolean clockwise) {
 	if (clockwise) {
-	    int size = this.getShape().length;
+	    int size = this.shape.length;
 	    int[][] newShape = new int[size][size];
 	    
 	    for (int i = 0; i < size; i++) {
 		for (int j = 0; j < size; j++) {
-		    newShape[i][j] = this.getShape()[size - 1 - j][i];
+		    newShape[i][j] = this.shape[size - 1 - j][i];
 		}
 	    }
-	    
-	    this.setShape(newShape);
+
+	    this.shape = newShape;
 	} else {
 	    for (int i = 0; i < 3; i++) {
 		this.rotate(true);
@@ -141,7 +141,7 @@ public class Tetromino {
     }
 
     public int type() {
-	return this.getShape()[this.configuration()[0][0]][this.configuration()[0][1]];
+	return this.shape[this.configuration()[0][0]][this.configuration()[0][1]];
     }
 
     public String toString() {
@@ -159,7 +159,7 @@ public class Tetromino {
 	    description += "\n";
 	}
 
-	description += "(" + this.getPosition()[0] + ", " + this.getPosition()[1] + ")\n";
+	description += "(" + this.position[0] + ", " + this.position[1] + ")\n";
 	
 	return description;
     }
