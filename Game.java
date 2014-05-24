@@ -3,8 +3,6 @@ import java.lang.String;
 public class Game {
     private int[][] well;
     private Tetromino[] tetrominos;
-    private Tetromino currentPiece;
-    private Tetromino[] nextPieces;
     private int line, score;
     private boolean gameIsOver;
 
@@ -22,13 +20,7 @@ public class Game {
 	for (int i = 1; i < this.tetrominos.length; i++) {
 	    this.tetrominos[i] = new Tetromino();
 	}
-
-	nextPieces = new Tetromino[5];
 	    
-	for (int i = 0; i < this.nextPieces.length; i++) {
-	    this.nextPieces[i] = new Tetromino();
-	}
-
 	this.nextPiece();
     }
 
@@ -44,33 +36,12 @@ public class Game {
 	return wellCopy;
     }
 
-    public void setWell(int[][] well) {
-	if (well.length != this.well.length) {
-	    return;
-	}
-
-	for (int i = 0; i < well.length; i++) {
-	    if (well[i].length != this.well[i].length) {
-		return;
-	    }
-	}
-	this.well = well;
-    }
-
     public int getLine() {
 	return this.line;
     }
 
-    public void setLine(int line) {
-	this.line = line;
-    }
-
     public int getScore() {
 	return this.score;
-    }
-
-    public void setScore(int score) {
-	this.score = score;
     }
 
     public int level() {
@@ -181,14 +152,6 @@ public class Game {
 
 	this.tetrominos[this.tetrominos.length - 1] = new Tetromino();
 	
-	this.tetrominos[0] = this.nextPieces[0];
-
-	for (int i = 0; i < this.nextPieces.length - 1; i++) {
-	    this.nextPieces[i] = this.nextPieces[i+1];
-	}
-
-	this.nextPieces[this.nextPieces.length - 1] = new Tetromino();
-	
 	int[] startPosition = {0,0};
 	
 	switch (tetrominos[0].getShape().length) {
@@ -213,8 +176,6 @@ public class Game {
 	}
 
 	this.tetrominos[0].setPosition(startPosition);
-
-	tetrominos[0].setPosition(startPosition);
 
 	if (this.wellConflict()) {
 	    this.gameIsOver = true;
