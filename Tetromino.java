@@ -128,12 +128,12 @@ public class Tetromino {
 	int[][] configuration = new int[4][2];
 	int count = 0;
 	if (this.shape.length == 1) {
-	    return new int[]{new int[]{0}};
+	    return new int[][]{new int[]{0}};
 	}
 	
 	for (int i = 0; i < this.shape.length; i++) {
 	    for (int j = 0; j < this.shape[i].length; j++) {
-		if (this.getShape()[i][j] != 0) {
+		if (this.[i][j] != 0) {
 		    configuration[count][0] = i;
 		    configuration[count++][1] = j;
 		}
@@ -147,10 +147,16 @@ public class Tetromino {
 	return this.shape[this.configuration()[0][0]][this.configuration()[0][1]];
     }
 
+    public static Tetromino empty() {
+	Tetromino empty = new Tetromino();
+	empty.setShape(TETROMINOS[0]);
+	return empty;
+    }
+
     public String toString() {
 	String description = "";
 	
-	for (int[] row : this.getShape()) {
+	for (int[] row : this.shape) {
 	    for (int element : row) {
 		if (element == 0) {
 		    description += "  ";
