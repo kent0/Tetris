@@ -54,6 +54,10 @@ public class Game {
 	return line / 10;
     }
 
+    public boolean gameIsOver() {
+	return this.gameIsOver;
+    }
+
     private boolean wellConflict() {
 	for (int i = 0; i < 4; i++) {
 	    int[] target = new int[2];
@@ -270,6 +274,10 @@ public class Game {
 	    if (!this.cleanMovePlace(new int[]{1,0},0)) {
 		this.clean();
 		this.nextPiece();
+	    }
+	} else {
+	    for (int i = 0; i < 5; i++) {
+		this.tetrominos[i] = Tetromino.empty();
 	    }
 	}
     }
