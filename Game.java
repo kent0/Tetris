@@ -164,7 +164,7 @@ public class Game {
 	    this.tetrominos[this.tetrominos.length-1] = temp;
 	}
 	this.placeShadow(true);
-	this.placeTile(1);
+	this.placeTile(this.tetrominos[0].type());
     }
 
     private void nextPiece() {
