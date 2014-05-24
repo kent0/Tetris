@@ -147,6 +147,10 @@ public class Tetromino {
 	return this.shape[this.configuration()[0][0]][this.configuration()[0][1]];
     }
 
+    public void resetShape() {
+	this.shape = TETROMINOS[this.type()];
+    }
+
     public static Tetromino empty() {
 	Tetromino empty = new Tetromino();
 	empty.setShape(TETROMINOS[0]);
