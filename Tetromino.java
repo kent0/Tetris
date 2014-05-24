@@ -128,12 +128,12 @@ public class Tetromino {
 	int[][] configuration = new int[4][2];
 	int count = 0;
 	if (this.shape.length == 1) {
-	    return new int[][]{new int[]{0}};
+	    return new int[][]{new int[]{0,0}};
 	}
 	
 	for (int i = 0; i < this.shape.length; i++) {
 	    for (int j = 0; j < this.shape[i].length; j++) {
-		if (this.[i][j] != 0) {
+		if (this.shape[i][j] != 0) {
 		    configuration[count][0] = i;
 		    configuration[count++][1] = j;
 		}
