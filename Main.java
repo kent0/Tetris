@@ -10,11 +10,10 @@ public class Main {
     public static void main(String[] args) {
 	JFrame frame = new JFrame("Tetris");
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	frame.setSize(500,800);
+	frame.setSize(800,800);
 	game = new Game();
 
 	panel = new TPanel(game);
-	panel.setSize(360,720);
 	panel.setFocusable(true);
 	panel.addKeyListener(new KeyListener() {
 
