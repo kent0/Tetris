@@ -78,10 +78,12 @@ public class Game {
     }
 
     private void placeShadow(boolean yes) {
+	int tempScore = score;
 	int[] position = this.tetrominos[0].getPosition();
 	this.drop();
 	this.placeTile(yes ? -1 : 0);
 	this.tetrominos[0].setPosition(position);
+	score = tempScore;
     }       
 
     private boolean move(int[] translation, int rotation) {
@@ -119,6 +121,7 @@ public class Game {
     private boolean drop() {
 	boolean didMove = false;
 	while (this.move(new int[]{1,0},0)) {
+	    this.score += 2;
 	    didMove = true;
 	}
 	return didMove;
@@ -132,7 +135,12 @@ public class Game {
     }
 
     public boolean down() {
-	return this.cleanMovePlace(new int[]{1,0},0);
+	if (this.cleanMovePlace(new int[]{1,0},0)) {
+	    this.score += 1;
+	    return true;
+	} else {
+	    return false;
+	}
     }
 
     public void right() {
@@ -259,7 +267,7 @@ public class Game {
 
     public void tick() {
 	if (!this.gameIsOver) {
-	    if (!this.down()) {
+	    if (!this.cleanMovePlace(new int[]{1,0},0)) {
 		this.clean();
 		this.nextPiece();
 	    }
