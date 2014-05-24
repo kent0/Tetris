@@ -106,9 +106,6 @@ public class TPanel extends JPanel {
     }
 
     public void update() {
-	this.scoreLabel.setText("Score: " + this.gameCopy.getScore());
-	this.levelLabel.setText("Level: " + this.gameCopy.level());
-	this.lineLabel.setText("Line: " + this.gameCopy.getLine());
 	this.repaint();
     }
 	
