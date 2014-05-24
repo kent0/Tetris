@@ -60,8 +60,18 @@ public class TPanel extends JPanel {
 		g.fillRect(this.origin[1]+this.blockSize*10+this.blockSize*(this.gameCopy.getTetrominos()[i].configuration()[j][1]+1)/2,(i-1)*this.blockSize*3+this.origin[0]+this.blockSize*this.gameCopy.getTetrominos()[i].configuration()[j][0]/2,this.blockSize/2,this.blockSize/2);
 	    }
 	}
-    }
 
+	g.setColor(this.brushColor(this.gameCopy.getTetrominos()[this.gameCopy.getTetrominos().length-1].type()));
+
+	for (int j = 0; j < 4; j++) {
+	    g.fillRect(this.origin[1]+this.blockSize*10+this.blockSize*(this.gameCopy.getTetrominos()[4].configuration()[j][1]+1)/2,(4-1)*this.blockSize*3+this.origin[0]+this.blockSize*this.gameCopy.getTetrominos()[4].configuration()[j][0]/2,this.blockSize/2,this.blockSize/2);
+	    if (this.gameCopy.getTetrominos()[4].type() == 0) {
+		break;
+	    }
+	}
+
+    }
+    
     public Color brushColor(int brushType) {
 		    
 	switch (brushType) {
