@@ -37,7 +37,7 @@ public class Game {
     }
 
     public Tetromino[] getTetrominos() {
-	return this.tetrominos();
+	return this.tetrominos;
     }
 
     public int getLine() {
