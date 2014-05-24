@@ -36,6 +36,10 @@ public class Game {
 	return wellCopy;
     }
 
+    public Tetromino[] getTetrominos() {
+	return this.tetrominos();
+    }
+
     public int getLine() {
 	return this.line;
     }
