@@ -15,9 +15,9 @@ public class Game {
 	    }
 	}
 
-	this.tetrominos = new Tetromino[4];
+	this.tetrominos = new Tetromino[5];
 
-	for (int i = 1; i < this.tetrominos.length; i++) {
+	for (int i = 1; i < this.tetrominos.length-1; i++) {
 	    this.tetrominos[i] = new Tetromino();
 	}
 	    
@@ -149,12 +149,16 @@ public class Game {
 	this.cleanMovePlace(new int[]{0,0},-1);
     }
 
+    public void hold() {
+	
+    }
+
     private void nextPiece() {
-	for (int i = 0; i < this.tetrominos.length - 1; i++) {
+	for (int i = 0; i < this.tetrominos.length - 2; i++) {
 	    this.tetrominos[i] = this.tetrominos[i+1];
 	}
 
-	this.tetrominos[this.tetrominos.length - 1] = new Tetromino();
+	this.tetrominos[this.tetrominos.length - 2] = new Tetromino();
 	
 	int[] startPosition = {0,0};
 	
