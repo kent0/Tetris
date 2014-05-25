@@ -43,17 +43,7 @@ public class Tetromino {
     }
 
     public int[][] getShape() {
-	int[][] shapeCopy = new int[this.shape.length][this.shape[0].length];
-	for (int i = 0; i < shapeCopy.length; i++) {
-	    for (int j = 0; j < shapeCopy[i].length; j++) {
-		shapeCopy[i][j] = this.shape[i][j];
-	    }
-	}
-	return shapeCopy;
-    }
-
-    private void setShape(int[][] shape) {
-	this.shape = shape;
+	return this.shape;
     }
 
     public int[] getPosition() {
@@ -75,26 +65,25 @@ public class Tetromino {
 
     public void translate(int[] translation) {
 	if (translation.length == 2) {
-	    this.position = new int[]{this.position[0] + translation[0],
-				      this.position[1] + translation[1]};
+	    position = new int[]{position[0] + translation[0],
+				      position[1] + translation[1]};
 	}
     }
 	
     public void rotate(boolean clockwise) {
 	if (clockwise) {
-	    int size = this.shape.length;
-	    int[][] newShape = new int[size][size];
+	    int[][] newShape = new int[shape.length][shape.length];
 	    
-	    for (int i = 0; i < size; i++) {
-		for (int j = 0; j < size; j++) {
-		    newShape[i][j] = this.shape[size - 1 - j][i];
+	    for (int i = 0; i < shape.length; i++) {
+		for (int j = 0; j < shape.length; j++) {
+		    newShape[i][j] = shape[shape.length - 1 - j][i];
 		}
 	    }
 
-	    this.shape = newShape;
+	    shape = newShape;
 	} else {
 	    for (int i = 0; i < 3; i++) {
-		this.rotate(true);
+		rotate(true);
 	    }
 	}
 	
@@ -126,15 +115,16 @@ public class Tetromino {
     }
 
     public int[][] configuration() {
-	int[][] configuration = new int[4][2];
-	int count = 0;
-	if (this.shape.length == 1) {
+	if (shape.length == 1) {
 	    return new int[][]{new int[]{0,0}};
 	}
+
+	int[][] configuration = new int[4][2];
+	int count = 0;
 	
-	for (int i = 0; i < this.shape.length; i++) {
-	    for (int j = 0; j < this.shape[i].length; j++) {
-		if (this.shape[i][j] != 0) {
+	for (int i = 0; i < shape.length; i++) {
+	    for (int j = 0; j < shape[i].length; j++) {
+		if (shape[i][j] != 0) {
 		    configuration[count][0] = i;
 		    configuration[count++][1] = j;
 		}
@@ -145,23 +135,23 @@ public class Tetromino {
     }
 
     public int type() {
-	return this.shape[this.configuration()[0][0]][this.configuration()[0][1]];
+	return shape[configuration()[0][0]][configuration()[0][1]];
     }
 
     public void resetShape() {
-	this.shape = TETROMINOS[this.type()];
+	shape = TETROMINOS[type()];
     }
 
     public static Tetromino empty() {
 	Tetromino empty = new Tetromino();
-	empty.setShape(TETROMINOS[0]);
+	empty.shape = TETROMINOS[0];
 	return empty;
     }
 
     public String toString() {
 	String description = "";
 	
-	for (int[] row : this.shape) {
+	for (int[] row : shape) {
 	    for (int element : row) {
 		if (element == 0) {
 		    description += "  ";
@@ -173,8 +163,8 @@ public class Tetromino {
 	    description += "\n";
 	}
 
-	description += "(" + this.position[0] + ", " +
-	    this.position[1] + ")\n";
+	description += "(" + position[0] + ", " +
+	    position[1] + ")\n";
 	
 	return description;
     }

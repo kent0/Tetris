@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
 	JFrame frame = new JFrame("Tetris");
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	frame.setSize(24*16,24*25);
+	frame.setSize(24 * 16, 24 * 25);
 	game = new Game();
 
 	panel = new TPanel(game);

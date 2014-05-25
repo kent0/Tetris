@@ -10,8 +10,8 @@ public class TPanel extends JPanel {
     public TPanel(Game game) {
 	this.gameCopy = game;
 	this.blockSize = 24;
-	this.origin = new int[]{this.blockSize*2,this.blockSize*3};
-	this.setSize(16*this.blockSize,20*this.blockSize);
+	this.origin = new int[]{this.blockSize * 2, this.blockSize * 3};
+	this.setSize(16 * this.blockSize, 20 * this.blockSize);
     }
 
     public void paintComponent(Graphics g) {
@@ -19,67 +19,68 @@ public class TPanel extends JPanel {
 
 	Graphics2D g2 = (Graphics2D) g;
 	
-	if (this.gameCopy.gameIsOver()) {
+	if (gameCopy.getGameIsOver()) {
 	    
-	    int S = 10;
-	    this.origin = new int[]{24*5,92};
+	    int s = 10;
+	    origin = new int[]{24 * 5, 92};
+	    
 	    g2.setColor(Color.white);
-            g2.fillRect(this.origin[1],this.origin[0],20*S,S*11);
+            g2.fillRect(origin[1],origin[0],20*s,s*11);
             g2.setColor(Color.black);
             //G
-            g2.fillRect(this.origin[1]+S,this.origin[0]+S,2*S,3*S);
-            g2.fillRect(this.origin[1]+3*S,this.origin[0]+S,S,2*S);
-            g2.fillRect(this.origin[1]+4*S,this.origin[0],S,5*S);
+            g2.fillRect(origin[1]+s,origin[0]+s,2*s,3*s);
+            g2.fillRect(origin[1]+3*s,origin[0]+s,s,2*s);
+            g2.fillRect(origin[1]+4*s,origin[0],s,5*s);
             //A
-            g2.fillRect(this.origin[1]+6*S,this.origin[0]+S,2*S,S);
-            g2.fillRect(this.origin[1]+6*S,this.origin[0]+3*S,2*S,2*S);
-            g2.fillRect(this.origin[1]+9*S,this.origin[0],S,5*S);
+            g2.fillRect(origin[1]+6*s,origin[0]+s,2*s,s);
+            g2.fillRect(origin[1]+6*s,origin[0]+3*s,2*s,2*s);
+            g2.fillRect(origin[1]+9*s,origin[0],s,5*s);
             //M
-            g2.fillRect(this.origin[1]+11*S,this.origin[0]+S,S,4*S);
-            g2.fillRect(this.origin[1]+13*S,this.origin[0]+S,S,4*S);
-            g2.fillRect(this.origin[1]+15*S,this.origin[0],S,5*S);
+            g2.fillRect(origin[1]+11*s,origin[0]+s,s,4*s);
+            g2.fillRect(origin[1]+13*s,origin[0]+s,s,4*s);
+            g2.fillRect(origin[1]+15*s,origin[0],s,5*s);
             //E
-            g2.fillRect(this.origin[1]+17*S,this.origin[0]+S,3*S,S);
-            g2.fillRect(this.origin[1]+17*S,this.origin[0]+3*S,3*S,S);
+            g2.fillRect(origin[1]+17*s,origin[0]+s,3*s,s);
+            g2.fillRect(origin[1]+17*s,origin[0]+3*s,3*s,s);
             //Nline
-            g2.fillRect(this.origin[1],this.origin[0]+5*S,20*S,S);
+            g2.fillRect(origin[1],origin[0]+5*s,20*s,s);
             //O
-            g2.fillRect(this.origin[1]+S,this.origin[0]+7*S,2*S,3*S);
-            g2.fillRect(this.origin[1]+4*S,this.origin[0]+6*S,S,5*S);
+            g2.fillRect(origin[1]+s,origin[0]+7*s,2*s,3*s);
+            g2.fillRect(origin[1]+4*s,origin[0]+6*s,s,5*s);
             //V
-            g2.fillRect(this.origin[1]+5*S,this.origin[0]+8*S,S,3*S);
-            g2.fillRect(this.origin[1]+6*S,this.origin[0]+9*S,S,2*S);
-            g2.fillRect(this.origin[1]+6*S,this.origin[0]+6*S,3*S,2*S);
-            g2.fillRect(this.origin[1]+7*S,this.origin[0]+8*S,S,S);
-            g2.fillRect(this.origin[1]+8*S,this.origin[0]+9*S,S,2*S);
-            g2.fillRect(this.origin[1]+9*S,this.origin[0]+8*S,S,3*S);
-            g2.fillRect(this.origin[1]+10*S,this.origin[0]+6*S,S,5*S);
+            g2.fillRect(origin[1]+5*s,origin[0]+8*s,s,3*s);
+            g2.fillRect(origin[1]+6*s,origin[0]+9*s,s,2*s);
+            g2.fillRect(origin[1]+6*s,origin[0]+6*s,3*s,2*s);
+            g2.fillRect(origin[1]+7*s,origin[0]+8*s,s,s);
+            g2.fillRect(origin[1]+8*s,origin[0]+9*s,s,2*s);
+            g2.fillRect(origin[1]+9*s,origin[0]+8*s,s,3*s);
+            g2.fillRect(origin[1]+10*s,origin[0]+6*s,s,5*s);
             //E
-            g2.fillRect(this.origin[1]+12*S,this.origin[0]+7*S,3*S,S);
-            g2.fillRect(this.origin[1]+12*S,this.origin[0]+9*S,3*S,S);
-            g2.fillRect(this.origin[1]+15*S,this.origin[0]+6*S,S,5*S);
+            g2.fillRect(origin[1]+12*s,origin[0]+7*s,3*s,s);
+            g2.fillRect(origin[1]+12*s,origin[0]+9*s,3*s,s);
+            g2.fillRect(origin[1]+15*s,origin[0]+6*s,s,5*s);
             //R
-            g2.fillRect(this.origin[1]+17*S,this.origin[0]+7*S,2*S,S);
-            g2.fillRect(this.origin[1]+17*S,this.origin[0]+9*S,2*S,2*S);
-            g2.fillRect(this.origin[1]+19*S,this.origin[0]+8*S,S,S);
+            g2.fillRect(origin[1]+17*s,origin[0]+7*s,2*s,s);
+            g2.fillRect(origin[1]+17*s,origin[0]+9*s,2*s,2*s);
+            g2.fillRect(origin[1]+19*s,origin[0]+8*s,s,s);
 	    
 	} else {
 	    
-	    this.setBackground(Color.BLACK);
+	    setBackground(Color.BLACK);
 	    System.out.println(gameCopy);
 
 	    g2.setColor(Color.DARK_GRAY);
-	    g2.drawRect(this.origin[1],this.origin[0], 10 * this.blockSize,
-			20 * this.blockSize);
+	    g2.drawRect(origin[1],origin[0], 10 * blockSize,
+			20 * blockSize);
 
 	    for (int i = 0; i < 20; i++) {
 		for (int j = 0; j < 10; j++) {
 		    if (gameCopy.getWell()[i+2][j] != 0) {
 		    
-			g2.setColor(this.brushColor(this.gameCopy.getWell()[i + 2][j]));
-			g2.fillRect(origin[1] + this.blockSize * j,
-				    origin[0] + this.blockSize * i,
-				    this.blockSize,this.blockSize);
+			g2.setColor(brushColor(gameCopy.getWell()[i + 2][j]));
+			g2.fillRect(origin[1] + blockSize * j,
+				    origin[0] + blockSize * i,
+				    blockSize,blockSize);
 		    }
 		}
 	    }
@@ -87,39 +88,39 @@ public class TPanel extends JPanel {
 	    g2.setColor(Color.DARK_GRAY);
 	
 	    for (int i = 0; i < 20; i++) {
-		g2.drawLine(origin[1],origin[0] + this.blockSize * i,
-			    origin[1] + 10 * this.blockSize,
-			    origin[0] + this.blockSize * i);
+		g2.drawLine(origin[1],origin[0] + blockSize * i,
+			    origin[1] + 10 * blockSize,
+			    origin[0] + blockSize * i);
 	    }
 
 	    for (int i = 0; i < 10; i++) {
-		g2.drawLine(origin[1] + this.blockSize * i,
+		g2.drawLine(origin[1] + blockSize * i,
 			    origin[0],
-			    origin[1] + this.blockSize * i,
-			    origin[0] + 20 *this.blockSize);
+			    origin[1] + blockSize * i,
+			    origin[0] + 20 *blockSize);
 	    }
 
 	    for (int i = 1; i < 4; i++) {
-		g2.setColor(this.brushColor(this.gameCopy.getTetrominos()[i].type()));
+		g2.setColor(brushColor(gameCopy.getTetrominos()[i].type()));
 		for (int j = 0; j < 4; j++) {
-		    g2.fillRect(this.origin[1] + this.blockSize * 10 +
-				this.blockSize * (this.gameCopy.getTetrominos()[i].configuration()[j][1] + 1) / 2,
-				(i - 1) * this.blockSize * 3 +
-				this.origin[0] + this.blockSize *
-				this.gameCopy.getTetrominos()[i].configuration()[j][0] / 2,
-				this.blockSize / 2, this.blockSize / 2);
-		}2
+		    g2.fillRect(origin[1] + blockSize * 10 +
+				blockSize * (gameCopy.getTetrominos()[i].configuration()[j][1] + 1) / 2,
+				(i - 1) * blockSize * 3 +
+				origin[0] + blockSize *
+				gameCopy.getTetrominos()[i].configuration()[j][0] / 2,
+				blockSize / 2, blockSize / 2);
+		}
 	    }
 
-	    g2.setColor(this.brushColor(this.gameCopy.getTetrominos()[this.gameCopy.getTetrominos().length - 1].type()));
+	    g2.setColor(brushColor(gameCopy.getTetrominos()[gameCopy.getTetrominos().length - 1].type()));
 
 	    for (int j = 0; j < 4; j++) {
-		g2.fillRect(this.blockSize *
-			    (this.gameCopy.getTetrominos()[4].configuration()[j][1] + 1) / 2,
-			    this.origin[0] + this.blockSize *
-			    this.gameCopy.getTetrominos()[4].configuration()[j][0] / 2,
-			    this.blockSize / 2, this.blockSize / 2);
-		if (this.gameCopy.getTetrominos()[4].type() == 0) {
+		g2.fillRect(blockSize *
+			    (gameCopy.getTetrominos()[4].configuration()[j][1] + 1) / 2,
+			    origin[0] + blockSize *
+			    gameCopy.getTetrominos()[4].configuration()[j][0] / 2,
+			    blockSize / 2, blockSize / 2);
+		if (gameCopy.getTetrominos()[4].type() == 0) {
 		    break;
 		}
 	    }
@@ -128,10 +129,10 @@ public class TPanel extends JPanel {
 				RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 	    g2.setFont(new Font("Futura", Font.PLAIN, 16));
 	    g2.setColor(Color.WHITE);
-	    g2.drawString("Hold", this.blockSize, this.blockSize);
-	    g2.drawString("Score: " + this.gameCopy.getScore(),
-			  this.blockSize * 6, this.blockSize);
-	    g2.drawString("Next", this.blockSize * 27/2, this.blockSize);
+	    g2.drawString("Hold", blockSize, blockSize);
+	    g2.drawString("Score: " + gameCopy.getScore(),
+			  blockSize * 6, blockSize);
+	    g2.drawString("Next", blockSize * 27/2, blockSize);
 
 	}
 
@@ -171,7 +172,6 @@ public class TPanel extends JPanel {
     }
 
     public void update() {
-	this.repaint();
+	repaint();
     }
-	
 }
