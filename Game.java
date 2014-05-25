@@ -63,9 +63,12 @@ public class Game {
     private boolean wellConflict() {
 	for (int i = 0; i < 4; i++) {
 	    int[] target = new int[2];
-	    target[0] = this.tetrominos[0].getPosition()[0] + this.tetrominos[0].configuration()[i][0];
-	    target[1] = this.tetrominos[0].getPosition()[1] + this.tetrominos[0].configuration()[i][1];
-	    if (target[0] < 0 || target[0] > 21 || target[1] < 0 || target[1] > 9 || well[target[0]][target[1]] > 0) {
+	    target[0] = this.tetrominos[0].getPosition()[0] +
+		this.tetrominos[0].configuration()[i][0];
+	    target[1] = this.tetrominos[0].getPosition()[1] +
+		this.tetrominos[0].configuration()[i][1];
+	    if (target[0] < 0 || target[0] > 21 || target[1] < 0 ||
+		target[1] > 9 || well[target[0]][target[1]] > 0) {
 		System.out.println("Conflict @ (" + target[0] + ", " + target[1] + ")");
 		return true;
 	    }
@@ -96,9 +99,13 @@ public class Game {
 	if (!(rotation == 0)) {
 	    this.tetrominos[0].rotate(rotation == 1);
 	    if (this.wellConflict()) {
-		if (!this.move(new int[]{0,1},0) && !this.move(new int[]{0,-1},0)) {
-		    this.tetrominos[0].rotate(rotation == -1);
+		if (this.tetrominos[0].type() == 4 && !this.move(new int[]{0,1},0) && !this.move(new int[]{0,2},0) && !this.move(new int[]{0,-1},0) && !this.move(new int[]{0,-2},0)) {
 		    return false;
+		} else {
+		    if (!this.move(new int[]{0,1},0) && !this.move(new int[]{0,-1},0)) {
+			this.tetrominos[0].rotate(rotation == -1);
+			return false;
+		    }
 		}
 	    }
 	} else {
