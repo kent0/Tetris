@@ -19,8 +19,8 @@ public class TPanel extends JPanel {
 
 	Graphics2D g2 = (Graphics2D) g;
 	
-
 	if (this.gameCopy.gameIsOver()) {
+	    
 	    int S = 10;
 	    this.origin = new int[]{24*5,92};
 	    g2.setColor(Color.white);
@@ -62,7 +62,9 @@ public class TPanel extends JPanel {
             g2.fillRect(this.origin[1]+17*S,this.origin[0]+7*S,2*S,S);
             g2.fillRect(this.origin[1]+17*S,this.origin[0]+9*S,2*S,2*S);
             g2.fillRect(this.origin[1]+19*S,this.origin[0]+8*S,S,S);
+	    
 	} else {
+	    
 	    this.setBackground(Color.BLACK);
 	    System.out.println(gameCopy);
 
@@ -107,12 +109,12 @@ public class TPanel extends JPanel {
 
 	    g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 	
-	    g2.setFont(new Font("Futura", Font.PLAIN, 14));
+	    g2.setFont(new Font("Futura", Font.PLAIN, 16));
 
 	    g2.setColor(Color.WHITE);
 	    g2.drawString("Hold", this.blockSize, this.blockSize);
 	    g2.drawString("Score: " + this.gameCopy.getScore(), this.blockSize * 6, this.blockSize);
-	    g2.drawString("Next", this.blockSize * 14, this.blockSize);
+	    g2.drawString("Next", this.blockSize * 27/2, this.blockSize);
 
 	}
 
