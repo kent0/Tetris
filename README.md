@@ -25,9 +25,22 @@ This is the model of the Tetris game. Actions such as tetromino translation, rot
 
 Tetromino is the nomenclature for the pieces used in Tetris. There are 7 types of tetrominos in the game of Tetris. This class provides translational and rotational movements of the tetrominos.
 
+### Tetris.jar
+
+A compiled archive of all the classes.
+
 ## Instructions
+
+### Compilation
 
 1. On a Unix system, put the files in the same folder.
 2. `cd` into the folder.
 3. Run the command `$ javac *.java`
 4. Run the command `$ java Main`
+
+### Game Control
+
+- 'a', 's', and 'd' keys for translational movement.
+- 'w' key for hard drop.
+- 'j' & 'k' keys for rotational movement.
+- 'l' key for hold.
