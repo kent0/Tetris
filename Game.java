@@ -69,7 +69,8 @@ public class Game {
 		this.tetrominos[0].configuration()[i][1];
 	    if (target[0] < 0 || target[0] > 21 || target[1] < 0 ||
 		target[1] > 9 || well[target[0]][target[1]] > 0) {
-		System.out.println("Conflict @ (" + target[0] + ", " + target[1] + ")");
+		System.out.println("Conflict @ (" + target[0] + ", " +
+				   target[1] + ")");
 		return true;
 	    }
 	}
@@ -79,8 +80,13 @@ public class Game {
 
     private void placeTile(int color) {
 	for (int i = 0; i < 4; i++) {
-	    int[] target = {this.tetrominos[0].getPosition()[0]+this.tetrominos[0].configuration()[i][0],this.tetrominos[0].getPosition()[1]+this.tetrominos[0].configuration()[i][1]};
-	    if (target[0] >= 0 && target[0] < 22 && target[1] >= 0 && target[1] < 10) {
+	    int[] target = {this.tetrominos[0].getPosition()[0] +
+			    this.tetrominos[0].configuration()[i][0],
+			    this.tetrominos[0].getPosition()[1] +
+			    this.tetrominos[0].configuration()[i][1]};
+	    
+	    if (target[0] >= 0 && target[0] < 22 && target[1] >= 0 &&
+		target[1] < 10) {
 		this.well[target[0]][target[1]] = color;
 	    } 
 	}
@@ -98,11 +104,17 @@ public class Game {
     private boolean move(int[] translation, int rotation) {
 	if (!(rotation == 0)) {
 	    this.tetrominos[0].rotate(rotation == 1);
+	    
 	    if (this.wellConflict()) {
-		if (this.tetrominos[0].type() == 4 && !this.move(new int[]{0,1},0) && !this.move(new int[]{0,2},0) && !this.move(new int[]{0,-1},0) && !this.move(new int[]{0,-2},0)) {
+		if (this.tetrominos[0].type() == 4 &&
+		    !this.move(new int[]{0,1},0) &&
+		    !this.move(new int[]{0,2},0) &&
+		    !this.move(new int[]{0,-1},0) &&
+		    !this.move(new int[]{0,-2},0)) {
 		    return false;
 		} else {
-		    if (!this.move(new int[]{0,1},0) && !this.move(new int[]{0,-1},0)) {
+		    if (!this.move(new int[]{0,1},0) &&
+			!this.move(new int[]{0,-1},0)) {
 			this.tetrominos[0].rotate(rotation == -1);
 			return false;
 		    }
@@ -113,7 +125,8 @@ public class Game {
 		this.tetrominos[0].translate(translation);
 		if (this.wellConflict()) {
 		    System.out.println(this.tetrominos[0]);
-		    this.tetrominos[0].translate(new int[]{-translation[0], -translation[1]});
+		    this.tetrominos[0].translate(new int[]{-translation[0],
+							   -translation[1]});
 		    return false;
 		}
 	    }
@@ -183,7 +196,8 @@ public class Game {
 		this.nextPiece();
 		this.tetrominos[this.tetrominos.length-1] = temp;
 	    } else {
-		this.tetrominos[0] = this.tetrominos[this.tetrominos.length-1];
+		this.tetrominos[0] =
+		    this.tetrominos[this.tetrominos.length-1];
 		this.tetrominos[0].resetShape();
 		this.tetrominos[0].setPosition(this.startPosition(tetrominos[0]));
 		this.tetrominos[this.tetrominos.length-1] = temp;

@@ -75,7 +75,8 @@ public class Tetromino {
 
     public void translate(int[] translation) {
 	if (translation.length == 2) {
-	    this.position = new int[]{this.position[0]+translation[0],this.position[1]+translation[1]};
+	    this.position = new int[]{this.position[0] + translation[0],
+				      this.position[1] + translation[1]};
 	}
     }
 	
@@ -172,7 +173,8 @@ public class Tetromino {
 	    description += "\n";
 	}
 
-	description += "(" + this.position[0] + ", " + this.position[1] + ")\n";
+	description += "(" + this.position[0] + ", " +
+	    this.position[1] + ")\n";
 	
 	return description;
     }
