@@ -96,9 +96,13 @@ public class Game {
 	if (!(rotation == 0)) {
 	    this.tetrominos[0].rotate(rotation == 1);
 	    if (this.wellConflict()) {
-		if (!this.move(new int[]{0,1},0) && !this.move(new int[]{0,-1},0)) {
-		    this.tetrominos[0].rotate(rotation == -1);
+		if (this.tetrominos[0].type() == 4 && !this.move(new int[]{0,1},0) && !this.move(new int[]{0,2},0) && !this.move(new int[]{0,-1},0) && !this.move(new int[]{0,-2},0)) {
 		    return false;
+		} else {
+		    if (!this.move(new int[]{0,1},0) && !this.move(new int[]{0,-1},0)) {
+			this.tetrominos[0].rotate(rotation == -1);
+			return false;
+		    }
 		}
 	    }
 	} else {
