@@ -4,7 +4,7 @@ public class Game {
     private int[][] well;
     private Tetromino[] tetrominos;
     private int line, score;
-    private boolean gameIsOver;
+    private boolean gameIsOver, holdSwitch;
 
     public Game() {
 	this.well = new int[22][10];
@@ -20,10 +20,12 @@ public class Game {
 	for (int i = 1; i < this.tetrominos.length-1; i++) {
 	    this.tetrominos[i] = new Tetromino();
 	}
-
+	
 	this.tetrominos[this.tetrominos.length-1] = Tetromino.empty();
-	    
 	this.nextPiece();
+
+	this.line = this.score = 0;
+	this.gameIsOver = this.holdSwitch = false;
     }
 
     public int[][] getWell() {
