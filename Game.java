@@ -166,21 +166,26 @@ public class Game {
     }
 
     public void hold() {
-	this.placeTile(0);
-	this.placeShadow(false);
-	Tetromino temp = this.tetrominos[0];
-	temp.resetShape();
-	if (this.tetrominos[this.tetrominos.length-1].type() == 0) {
-	    this.nextPiece();
-	    this.tetrominos[this.tetrominos.length-1] = temp;
-	} else {
-	    this.tetrominos[0] = this.tetrominos[this.tetrominos.length-1];
-	    this.tetrominos[0].resetShape();
-	    this.tetrominos[0].setPosition(this.startPosition(tetrominos[0]));
-	    this.tetrominos[this.tetrominos.length-1] = temp;
+	if (!this.holdSwitch) {
+	    this.placeTile(0);
+	    this.placeShadow(false);
+	    Tetromino temp = this.tetrominos[0];
+	    temp.resetShape();
+	    
+	    if (this.tetrominos[this.tetrominos.length-1].type() == 0) {
+		this.nextPiece();
+		this.tetrominos[this.tetrominos.length-1] = temp;
+	    } else {
+		this.tetrominos[0] = this.tetrominos[this.tetrominos.length-1];
+		this.tetrominos[0].resetShape();
+		this.tetrominos[0].setPosition(this.startPosition(tetrominos[0]));
+		this.tetrominos[this.tetrominos.length-1] = temp;
+	    }
+	    
+	    this.placeShadow(true);
+	    this.placeTile(this.tetrominos[0].type());
+	    this.holdSwitch = true;
 	}
-	this.placeShadow(true);
-	this.placeTile(this.tetrominos[0].type());
     }
 
     private void nextPiece() {
@@ -188,8 +193,7 @@ public class Game {
 	    this.tetrominos[i] = this.tetrominos[i+1];
 	}
 
-	this.tetrominos[this.tetrominos.length - 2] = new Tetromino();
-	
+	this.tetrominos[this.tetrominos.length - 2] = new Tetromino();	
 	this.tetrominos[0].setPosition(this.startPosition(tetrominos[0]));
 
 	if (this.wellConflict()) {
@@ -198,6 +202,8 @@ public class Game {
 	    this.placeShadow(true);
 	    this.placeTile(this.tetrominos[0].type());
 	}
+
+	this.holdSwitch = false;
     }
 
     private int[] startPosition(Tetromino tetromino) {
