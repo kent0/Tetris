@@ -109,6 +109,7 @@ public class Game {
 		    if (!move(new int[]{0,1},0) &&
 			!move(new int[]{0,-1},0)) {
 			tetrominos[0].rotate(rotation == -1);
+
 			return false;
 		    }
 		}
