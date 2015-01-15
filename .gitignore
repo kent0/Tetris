@@ -1,3 +1,4 @@
+*.jar
 /Game.class
 /Main$1.class
 /Main$TimerListener.class
@@ -6,4 +7,3 @@
 /Tetromino.class
 /TimerListener.class
 /manifest.txt
-/Tetris.jar/*
