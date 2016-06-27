@@ -1,4 +1,5 @@
 *.jar
+*.swp
 /Game.class
 /Main$1.class
 /Main$TimerListener.class
