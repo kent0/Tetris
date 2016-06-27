@@ -1,5 +1,6 @@
 *.jar
 *.swp
+*.DS_Store
 /Game.class
 /Main$1.class
 /Main$TimerListener.class
